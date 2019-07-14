@@ -6,8 +6,8 @@
 *  Due Date:   07/14/2019
 *****************************************/
 
-#ifndef VectorClass_h
-#define VectorClass_h
+#ifndef VECTOR_H
+#define VECTOR_H
 
 
 #include <iostream>
