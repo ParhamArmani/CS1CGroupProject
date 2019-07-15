@@ -33,7 +33,7 @@ public:
     void setPenWidth(int);
     void setPenCap(Qt::PenCapStyle);
     void setPenJoint(Qt::PenJoinStyle);
-    void setBrushColot(Qt::GlobalColor);
+    void setBrushColor(Qt::GlobalColor);
     void setBrushStyle(Qt::BrushStyle);
 
     void setTextAlignment();
@@ -41,6 +41,7 @@ public:
     void setTextFont();
     void setTextStyle();
     void setTextWeight();
+
     void setCoords(int, int);       //changes the shapes position
 
 private:

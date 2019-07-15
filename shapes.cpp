@@ -54,13 +54,45 @@ void shape::setPenColor(Qt::GlobalColor)
     paint.setPen(p);
 
 }
-void shape::setPenBrush(QBrush)
+void shape::setPenStyle(Qt::PenStyle)
 {
-
+    QPen p(paint.pen());
+    p.setStyle(Qt::PenStyle());
+    paint.setPen(p);
 }
-void shape::setPenStyle(QPen)
+void shape::setPenWidth(int w)
 {
-
+    QPen p(paint.pen());
+    p.setWidth(w);
+    paint.setPen(p);
+}
+void shape::setPenCap(Qt::PenCapStyle)
+{
+    QPen p(paint.pen());
+    p.setCapStyle(Qt::PenCapStyle());
+    paint.setPen(p);
+}
+void shape::setPenJoint(Qt::PenJoinStyle)
+{
+    QPen p(paint.pen());
+    p.setJoinStyle(Qt::PenJoinStyle());
+    paint.setPen(p);
+}
+void shape::setBrushColor(Qt::GlobalColor)
+{
+    QPen p(paint.pen());
+    QBrush b(p.brush());
+    b.setColor(Qt::GlobalColor());
+    p.setBrush(b);
+    paint.setPen(p);
+}
+void shape::setBrushStyle(Qt::BrushStyle)
+{
+    QPen p(paint.pen());
+    QBrush b(p.brush());
+    b.setStyle(Qt::BrushStyle());
+    p.setBrush(b);
+    paint.setPen(p);
 }
 void shape::setCoords(int x, int y)
 {
