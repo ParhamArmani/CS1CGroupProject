@@ -3,6 +3,7 @@
 
 #include <string>
 #include <QPainter>
+#include <QPen>
 using std::string;
 class shape     //BEGIN SHAPE ABC
 {
@@ -18,7 +19,6 @@ public:
 
     void setShape(shapeType shape);
     void setPen(Qt::GlobalColor, int width, Qt::PenStyle, Qt::PenCapStyle, Qt::PenJoinStyle);
-    void setPen(Qt::GlobalColor);
     void setBrush(Qt::GlobalColor, Qt::BrushStyle);
 
     void drawRect(int, int);
@@ -28,12 +28,20 @@ public:
     virtual double perimiter() = 0;   //finds the perimiter of the shape
     virtual double area() = 0;        //finds the area of the shape
 
-    void setPenColor(QPen);         //changes the pen color
-    void setPenBrush(QBrush);       //changes the pen brush
-    void setPenStyle(QPen);         //changes the pen style
+    void setPenColor(Qt::GlobalColor);      //changes the pen and text color
+    void setPenStyle(Qt::PenStyle);         //changes the pen style
+    void setPenWidth(int);
+    void setPenCap(Qt::PenCapStyle);
+    void setPenJoint(Qt::PenJoinStyle);
+    void setBrushColot(Qt::GlobalColor);
+    void setBrushStyle(Qt::BrushStyle);
+
+    void setTextAlignment();
+    void setTextSize();
+    void setTextFont();
+    void setTextStyle();
+    void setTextWeight();
     void setCoords(int, int);       //changes the shapes position
-    void setHeight(int);            //changes shape height
-    void setWidth(int);             //changes shape width
 
 private:
     QPainter paint;
@@ -41,14 +49,12 @@ private:
     QPen penInfo;
     QBrush brushInfo;
     shapeType s;
-    int x;
-    int y;
-    int h;
-    int w;
+    int x1;
+    int y1;
     int id;
     void asd()
     {
-        paint.drawText
+        paint.draw
     }
 };              //END SHAPE ABC
 
