@@ -37,13 +37,13 @@ namespace CS1C
         }
         //-------------------------------------------------
 
-        explicit vector(int s): size_v{s}, elem{new T[s]}, space{s}
+        explicit vector(int s): size_v{0}, elem{new T[s]}, space{s}
         {
             //Alternate Constructor for the Vector Class e.g: vector<double> myVectorName(NumberofElement)
             //Pre: Recieves the Size of the Element
             //Post: Constructs the object with elements
             
-            for (int i = 0; i < size_v; ++i)
+            for (int i = 0; i < space; ++i)
                 elem[i] = T(); // elements are initialized
                 }
         //-------------------------------------------------
