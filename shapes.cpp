@@ -53,100 +53,47 @@ shape::shapeType shape::getShape() const
 
 void shape::setPenColor(Qt::GlobalColor)
 {
-    QPen p(paint.pen());
-    p.setColor(Qt::GlobalColor());
-    paint.setPen(p);
-    pen = p;
-    get_qpainter().save();
+    pen.setColor(Qt::GlobalColor());
+    paint.setPen(pen);
 }
 void shape::setPenStyle(Qt::PenStyle)
 {
-    QPen p(paint.pen());
-    p.setStyle(Qt::PenStyle());
-    paint.setPen(p);
-    pen = p;
+    pen.setStyle(Qt::PenStyle());
+    paint.setPen(pen);
 }
 void shape::setPenWidth(int w)
 {
-    QPen p(paint.pen());
-    p.setWidth(w);
-    paint.setPen(p);
-    pen = p;
+    pen.setWidth(w);
+    paint.setPen(pen);
 }
 void shape::setPenCap(Qt::PenCapStyle)
 {
-    QPen p(paint.pen());
-    p.setCapStyle(Qt::PenCapStyle());
-    paint.setPen(p);
-    pen = p;
-
+    pen.setCapStyle(Qt::PenCapStyle());
+    paint.setPen(pen);
 }
 void shape::setPenJoint(Qt::PenJoinStyle)
 {
-    QPen p(paint.pen());
-    p.setJoinStyle(Qt::PenJoinStyle());
-    paint.setPen(p);
-    pen = p;
+    pen.setJoinStyle(Qt::PenJoinStyle());
+    paint.setPen(pen);
 }
 void shape::setBrushColor(Qt::GlobalColor)
 {
-    QPen p(paint.pen());
-    QBrush b(p.brush());
-    b.setColor(Qt::GlobalColor());
-    p.setBrush(b);
-    paint.setPen(p);
-    pen = p;
+    brush.setColor(Qt::GlobalColor());
+    pen.setBrush(brush);
+    paint.setBrush(brush);
 }
 void shape::setBrushStyle(Qt::BrushStyle)
 {
-//    QPen p(paint.pen());
-    QBrush b(paint.brush());
-    b.setStyle(Qt::BrushStyle());
-//    p.setBrush(b);
-    paint.setBrush(b);
-//    paint.setPen(p);
-    brush = b;
+    brush.setStyle(Qt::BrushStyle());
+    pen.setBrush(brush);
+    paint.setBrush(brush);
 }
 void shape::setCoords(int x, int y)
 {
     x1 = x;
     y1 = y;
 }
-
-
-void shape::setTextSize()
+QPainter& shape::getQpainter()
 {
-
-}
-
-
-
-text::text()
-{
-
-}
-
-text::text(string txt)
-{
-    QString asd();
-}
-
-void text::draw(const int translateX, const int translateY)
-{
-    paint.
-}
-
-void text::move(const int newX, const int newY)
-{
-    setCoords(newX, newY);
-}
-
-double text::perimiter()
-{
-    return 0;
-}
-
-double text::area()
-{
-    return 0;
+    return paint;
 }
