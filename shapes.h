@@ -44,19 +44,18 @@ public:
 
     void setCoords(int, int);       //changes the shapes position
 
+protected:
+    QPainter& getQpainter();
+
 private:
     QPainter paint;
     QPaintDevice* device;
-    QPen penInfo;
-    QBrush brushInfo;
+    QPen pen;
+    QBrush brush;
     shapeType s;
     int x1;
     int y1;
     int id;
-    void asd()
-    {
-        paint.draw
-    }
 };              //END SHAPE ABC
 
 
@@ -127,6 +126,8 @@ class text : public shape
 {
 private:
     QString str;
+    int l;
+    int w;
 
 public:
     text();
