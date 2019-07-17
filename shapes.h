@@ -43,6 +43,8 @@ public:
     void setTextWeight();
 
     void setCoords(int, int);       //changes the shapes position
+    int getX();
+    int getY();
 
 protected:
     QPainter& getQpainter();
@@ -59,93 +61,67 @@ private:
 };              //END SHAPE ABC
 
 
-class rectangle : public shape
-{
-private:
-    QRect rect;
-public:
-    rectangle();    //defualt constructor
+//class rectangle : public shape
+//{
+//private:
+//    QRect rect;
+//public:
+//    rectangle();    //defualt constructor
 
-    void draw(const int translateX, const int translateY);
-    void move(const int newX, const int newY);
-    double perimiter();
-    double area();
+//    void draw(const int translateX, const int translateY);
+//    void move(const int newX, const int newY);
+//    double perimiter();
+//    double area();
+
+//};
+
+//class line : public shape
+//{
+//private:
+//    QLine line;
+
+//public:
+//    void draw(const int translateX, const int translateY);
+//    void move(const int newX, const int newY);
+//    double perimiter();
+//    double area();
+
+//};
+
+//class polyline : public shape
+//{
+//private:
+
+//public:
+//    void draw(const int translateX, const int translateY);
+//    void move(const int newX, const int newY);
+//    double perimiter();
+//    double area();
+//};
+
+//class polygon : public shape
+//{
+//private:
+
+//public:
+//    void draw(const int translateX, const int translateY);
+//    void move(const int newX, const int newY);
+//    double perimiter();
+//    double area();
+
+//};
+
+//class elipse : public shape
+//{
+//private:
+//    QRect rect;
+
+//public:
+//    void draw(const int translateX, const int translateY);
+//    void move(const int newX, const int newY);
+//    double perimiter();
+//    double area();
 
 };
-
-class line : public shape
-{
-private:
-    QLine line;
-
-public:
-    void draw(const int translateX, const int translateY);
-    void move(const int newX, const int newY);
-    double perimiter();
-    double area();
-
-};
-
-class polyline : public shape
-{
-private:
-
-public:
-    void draw(const int translateX, const int translateY);
-    void move(const int newX, const int newY);
-    double perimiter();
-    double area();
-};
-
-class polygon : public shape
-{
-private:
-
-public:
-    void draw(const int translateX, const int translateY);
-    void move(const int newX, const int newY);
-    double perimiter();
-    double area();
-
-};
-
-class elipse : public shape
-{
-private:
-    QRect rect;
-
-public:
-    void draw(const int translateX, const int translateY);
-    void move(const int newX, const int newY);
-    double perimiter();
-    double area();
-
-};
-
-class text : public shape
-{
-private:
-    QString str;
-    int l;
-    int w;
-
-public:
-    text();
-    text(string);
-
-    void draw(const int translateX, const int translateY);
-    void move(const int newX, const int newY);
-    double perimiter();
-    double area();
-
-    void changeFont();
-    void changeString();
-    void changeColor();
-    void changeAlignment();
-    void changeSize();
-    void changeStyle();
-    void changeWeight();
-};
-
 
 #endif // SHAPES_H

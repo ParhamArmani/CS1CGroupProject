@@ -93,6 +93,14 @@ void shape::setCoords(int x, int y)
     x1 = x;
     y1 = y;
 }
+int shape::getX()
+{
+    return x1;
+}
+int shape::getY()
+{
+    return y1;
+}
 QPainter& shape::getQpainter()
 {
     return paint;
