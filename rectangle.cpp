@@ -63,8 +63,6 @@ double ellipse::area()
     double area;
     //rect.width();
     //rect.height();
-
-    area=static_cast<double>(rect.width())*(static_cast<double>(rect.height()));
     area = 3.14*(static_cast<double>(rect.width())/2)*(static_cast<double>(rect.height())/2);
     return area;
 }
