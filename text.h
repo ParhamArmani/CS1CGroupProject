@@ -12,7 +12,8 @@ private:
 
 public:
     text();
-    text(QString);
+    text(QPaintDevice* device = nullptr, int id = -1, shapeType s = shapeType::text, QString str = "Hello");
+    ~text();
 
     void draw();
     void move(const int newX, const int newY);

@@ -3,7 +3,11 @@
 
 shape::shape(QPaintDevice* device, int id, shapeType s) : s{s},id{id}
 {
-    device;
+
+}
+shape::~shape()
+{
+
 }
 const QPen& shape::getPen() const
 {

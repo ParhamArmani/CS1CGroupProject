@@ -1,13 +1,14 @@
 #include "text.h"
 
-text::text()
-{
+text::text() : shape()
+{}
 
-}
-
-text::text(QString txt)
+text::text(QPaintDevice* device, int id, shapeType s, QString txt) : shape(device, id, s)
 {
     str = txt;
+}
+text::~text()
+{
 }
 
 void text::draw()
