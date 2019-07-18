@@ -1,10 +1,13 @@
 #ifndef SHAPES_H
 #define SHAPES_H
 
-#include <string>
+
+#include <cmath>
+#include <QBrush>
+#include <QPoint>
 #include <QPainter>
 #include <QPen>
-using std::string;
+
 class shape     //BEGIN SHAPE ABC
 {
 public:
@@ -23,7 +26,7 @@ public:
 
     void drawRect(int, int);
 
-    virtual void draw(const int translateX, const int translateY) = 0;        //draws the shape
+    virtual void draw() = 0;        //draws the shape
     virtual void move(const int newX, const int newY) = 0;        //updates the shapes
     virtual double perimiter() = 0;   //finds the perimiter of the shape
     virtual double area() = 0;        //finds the area of the shape
@@ -35,12 +38,6 @@ public:
     void setPenJoint(Qt::PenJoinStyle);
     void setBrushColor(Qt::GlobalColor);
     void setBrushStyle(Qt::BrushStyle);
-
-    void setTextAlignment();
-    void setTextSize();
-    void setTextFont();
-    void setTextStyle();
-    void setTextWeight();
 
     void setCoords(int, int);       //changes the shapes position
     int getX();
@@ -122,6 +119,6 @@ private:
 //    double perimiter();
 //    double area();
 
-};
+//};
 
 #endif // SHAPES_H

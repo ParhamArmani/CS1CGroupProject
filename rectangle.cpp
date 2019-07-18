@@ -7,16 +7,17 @@ void rectangle::set_rect(const QRect& rect)
 }
 void rectangle::draw()
 {
-    get_qpainter().setPen(getPen());
-    get_qpainter().setBrush(getBrush());
-    get_qpainter().save();
-    get_qpainter().drawRect(rect);
-    get_qpainter().restore();
+    getQpainter().setPen(getPen());
+    getQpainter().setBrush(getBrush());
+    getQpainter().save();
+    getQpainter().drawRect(rect);
+    getQpainter().restore();
 }
 
-void rectangle::move(int x2,int y2)
+void rectangle::move(const int newX, const int newY)
 {
-    rect.setRect(x2,y2,rect.height(),rect.width());
+    rect.setRect(newX,newY,rect.height(),rect.width());
+    setCoords(newX, newY);
 }
 
 double rectangle::area()
@@ -44,17 +45,17 @@ void ellipse::set_ellipse(const QRect& rect)
 }
 void ellipse::draw()
 {
-    get_qpainter().setPen(getPen());
-    get_qpainter().setBrush(getBrush());
-    get_qpainter().save();
+    getQpainter().setPen(getPen());
+    getQpainter().setBrush(getBrush());
+    getQpainter().save();
 
-    get_qpainter().drawEllipse(rect);
-    get_qpainter().restore();
+    getQpainter().drawEllipse(rect);
+    getQpainter().restore();
 }
 
-void ellipse::move(int x2,int y2)
+void ellipse::move(const int newX, const int newY)
 {
-    rect.setRect(x2,y2,rect.height(),rect.width());
+    rect.setRect(newX,newY,rect.height(),rect.width());
 }
 
 

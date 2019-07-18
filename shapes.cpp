@@ -7,13 +7,11 @@ shape::shape(QPaintDevice* device, int i, shapeType s)
 }
 const QPen& shape::getPen() const
 {
-    QPen p(paint.pen());
-    return p;
+    return paint.pen();
 }
 const QBrush& shape::getBrush() const
 {
-    QBrush b(paint.brush());
-    return b;
+    return paint.brush();
 }
 void shape::setShape(shapeType shape)
 {
@@ -27,13 +25,6 @@ void shape::setPen(Qt::GlobalColor, int width, Qt::PenStyle, Qt::PenCapStyle, Qt
     newPen.setStyle(Qt::PenStyle());
     newPen.setCapStyle(Qt::PenCapStyle());
     newPen.setJoinStyle(Qt::PenJoinStyle());
-    paint.setPen(newPen);
-    pen = newPen;
-}
-void shape::setPen(Qt::GlobalColor)
-{
-    QPen newPen;
-    newPen.setColor(Qt::GlobalColor());
     paint.setPen(newPen);
     pen = newPen;
 }
