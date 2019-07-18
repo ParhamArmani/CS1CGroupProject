@@ -32,4 +32,5 @@ QPoint Line::getEnd()const
 void Line::move(const int x, const int y)
 {
 	Line.setLine(x, y);
+	setCoords(x, y)
 }
