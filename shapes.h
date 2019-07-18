@@ -122,6 +122,6 @@ private:
 //    double perimiter();
 //    double area();
 
-};
+//};
 
 #endif // SHAPES_H

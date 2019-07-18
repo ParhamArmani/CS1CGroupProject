@@ -1,19 +1,18 @@
 
 #include "shapes.h"
 
-shape::shape(QPaintDevice* device, int i, shapeType s)
+shape::shape(QPaintDevice* device, int id, shapeType s) : s{s},id{id}
 {
-    id = i;
+    device;
 }
 const QPen& shape::getPen() const
 {
-    QPen p(paint.pen());
-    return p;
+
+    return paint.pen();
 }
 const QBrush& shape::getBrush() const
 {
-    QBrush b(paint.brush());
-    return b;
+    return paint.brush();
 }
 void shape::setShape(shapeType shape)
 {
