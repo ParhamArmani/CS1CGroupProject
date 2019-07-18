@@ -12,3 +12,10 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+void MainWindow::paintEvent(QPaintEvent *event)
+{
+    QPainter painter(this);
+
+    painter.drawRect(QRect(80, 120, 200, 100));
+}
