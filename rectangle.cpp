@@ -1,9 +1,28 @@
 #include "rectangle.h"
 
+
+rectangle::rectangle(QPaintDevice* device, int id)
+    :shape(device, id, shapeType::rectangle)
+{
+
+}
+rectangle::rectangle(QPaintDevice* device, int id, int x1, int y1, int w, int h)
+    :shape(device,id,shapeType::rectangle), w{w}, h{h}
+{
+    setCoords(x1, y1);
+}
 void rectangle::set_rect(const QRect& rect)
 {
    this->rect=rect;
 
+}
+void rectangle::setWidth(int width)
+{
+    w = width;
+}
+void rectangle::setHeight(int height)
+{
+    h = height;
 }
 void rectangle::draw()
 {
