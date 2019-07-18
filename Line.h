@@ -11,7 +11,7 @@ class Line : public Shape
 		
 		~Line();
 		
-		void move(const int x, const int y;)
+		void move(const int x, const int y)
 		
 		// getters and setters for the start and the end of the points of the line
 		QPoint getStart()const;			// returns the start point of the line
