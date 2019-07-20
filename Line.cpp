@@ -1,36 +1,37 @@
-#include "Line.h"
+#include "line.h"
 
-Line::Line() = default;
-
-void Line::draw(QPaintDevice* device)const
+Line::Line() : shape()
 {
-	auto paint = getPainter(device);
-	paint -> drawLine(start, end);
+
 }
 
-double Line::getArea()const
+Line::Line(QPaintDevice* device, int id, shapeType::line)
 {
-	return -1;
-	
+
 }
 
-double Line::getPerimeter()const
+Line::Line(QPaintDevice* device, int id, shapeType::line, int x, int y)
 {
-	return -1;
+    setCoords(x, y);
 }
 
-QPoint Line::getStart()const
+void Line::draw(QPaintDevice* device)
 {
-	return start + getPos();	
-} 
+    auto paint = getPainter(device);
+    paint -> drawLine(startX, startY, endX, endY)
+}
 
-QPoint Line::getEnd()const
+double Line::getArea()
 {
-	return end + getPos();
+    return -1;
+}
+
+double Line::getPerimeter()
+{
+    return -1;
 }
 
 void Line::move(const int x, const int y)
 {
-	Line.setLine(x, y);
-	setCoords(x, y)
+    setCoords(x,y);
 }
