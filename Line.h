@@ -1,39 +1,32 @@
 #ifndef SHAPES_H
 #define SHAPES_H
 
-#include "Shape.h"
+#include "shapes.h"
 
 class Line : public Shape
 {
-	public:
-		Line(const QPoint& start = {}, const QPoint% end = {}, const QBrush &brush = {},
-		const QPen &pen = {};
-		
-		~Line();
-		
-		void move(const int x, const int y)
-		
-		// getters and setters for the start and the end of the points of the line
-		QPoint getStart()const;			// returns the start point of the line
-		
-		QPoint getEnd()const;			// returns the end point of the line
-		
-		void setStart(const QPoint& start);			// sets the start point of the line
-		
-		void setEnd(const QPoint& end);				// sets the end point of the line
-		
-		// function to draw the line on Qt
-		void draw(QPaintDevice* device)const override;
-		
-		// 
-		double getArea()const override;			// returns the area if the line (in this case it will always be 0)
-		
-		double getPerimeter()const override;
-	
-	private:
-		QPoint start;
-		QPoint end;
-		
-}
+public:
+    Line();
+    Line(QPaintDevice* device = nullptr, int id = -1);
+    Line(QPaintDevice* device = nullptr, int id = -1, int x =0, int y=0);
+    ~Line();
 
-#endif
+    void setEnd(int endX, int endY);
+    void setStart(int startX, int startY);
+
+    void move(const int x, const int y);
+
+    void draw(QPaintDevice* device);
+
+    double getArea();
+    double getPerimeter();
+
+private:
+    int startX;
+    int startY;
+    int endX;
+    int endY;
+
+};
+
+#endif // LINE_H
