@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>414</width>
-    <height>327</height>
+    <height>246</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -45,8 +45,8 @@
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>280</y>
+     <x>20</x>
+     <y>120</y>
      <width>201</width>
      <height>20</height>
     </rect>
@@ -58,7 +58,7 @@
   <widget class="QLabel" name="label_4">
    <property name="geometry">
     <rect>
-     <x>30</x>
+     <x>20</x>
      <y>40</y>
      <width>131</width>
      <height>20</height>
@@ -71,27 +71,14 @@
   <widget class="QLabel" name="label_5">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>250</y>
+     <x>20</x>
+     <y>100</y>
      <width>161</width>
      <height>16</height>
     </rect>
    </property>
    <property name="text">
     <string>Contact Us:</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton">
-   <property name="geometry">
-    <rect>
-     <x>280</x>
-     <y>280</y>
-     <width>93</width>
-     <height>28</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Close</string>
    </property>
   </widget>
  </widget>
