@@ -16,7 +16,7 @@ void text::move(const int newX, const int newY)
 {
     setCoords(newX, newY);
 }
-double text::perimiter()
+double text::perimeter()
 {
     return 0;
 }

@@ -24,6 +24,9 @@ private:
     int w;
     int h;
 };
+
+
+
 class ellipse : public shape
 {
 public:

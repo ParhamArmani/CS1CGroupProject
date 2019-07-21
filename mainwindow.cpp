@@ -18,7 +18,6 @@ void MainWindow::paintEvent(QPaintEvent *event)
 {
     QPainter painter(this);
     painter.begin(this);
-    ui->
     painter.drawLine(QPoint(50,60), QPoint(100,100));
 
     painter.setBrush(Qt::BDiagPattern);
