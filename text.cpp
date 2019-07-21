@@ -30,6 +30,7 @@ void text::setAlignment(Qt::AlignmentFlag)
 }
 void text::setSize(int size)
 {
+    pointSize = size;
     font.setPointSize(size);
     getQpainter().setFont(font);
 }
