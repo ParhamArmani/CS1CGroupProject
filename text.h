@@ -8,7 +8,7 @@ class text : public shape
 private:
     QString str;
     QFont font;
-    int alignment;
+    int pointSize;
     int w;
     int h;
 
