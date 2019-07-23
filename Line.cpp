@@ -52,7 +52,7 @@ void Line::draw()
  * 
  * @return -1 :is a number of type Double since line doesn't have an area 
  */
-double Line::area()
+double Line::area() const
 {
     return -1;
 }
@@ -62,7 +62,7 @@ double Line::area()
  * 
  * @return -1 :is a number of type Double since line doesn't have an perimeter 
  */
-double Line::perimeter()
+double Line::perimeter() const
 {
     return -1;
 }
