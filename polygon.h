@@ -15,8 +15,8 @@ public:
 
     void draw(QPaintDevice* device);
 
-    double getPerimeter();
-    double getArea();
+    double perimeter();
+    double area();
 
 
 
