@@ -21,7 +21,8 @@ MainWindow::MainWindow(QWidget *parent) :
     pal.setColor(QPalette::Background, Qt::white);
     ui->canvas->setAutoFillBackground(true);
     ui->canvas->setPalette(pal);
-//    ui->canvas->drawShapes();
+    ui->canvas->setShapeList(shapeList);
+    ui->canvas->drawShapes();
     ui->canvas->update();
 }
 

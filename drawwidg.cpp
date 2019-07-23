@@ -28,16 +28,13 @@ void drawWidg::paintEvent(QPaintEvent * /* event */)
     for(int i = 0; i < shapeList.size(); i++)
         shapeList[i]->draw();
 
-//    text* eqwe = new text;
-//    eqwe->setSize(20);
-//    eqwe->setCoords(200,200);
-//    eqwe->setString("hello there help");
-//    eqwe->draw();
 }
-void drawWidg::setShape(shape* currentShape)
+void drawWidg::drawShapes()
 {
-    shapePtr = currentShape;
+    for(int i = 0; i < shapeList.size(); i++)
+        shapeList[i]->draw();
 }
+
 void drawWidg::setShapeList(vector<shape *> old)
 {
     shapeList = old;

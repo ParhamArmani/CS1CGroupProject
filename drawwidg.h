@@ -13,7 +13,7 @@ class drawWidg : public QWidget
     Q_OBJECT
 public:
     explicit drawWidg(QWidget *parent = nullptr);
-    void setShape(shape* currentShape);
+    void drawShapes();
     void setShapeList(vector<shape*>);
 
 signals:
