@@ -1,6 +1,8 @@
 #include "drawwidg.h"
 #include "shape.h"
 #include "rectangle.h"
+#include "shapeparser.h"
+#include "vector.h"
 
 drawWidg::drawWidg(QWidget *parent) : QWidget(parent)
 {
