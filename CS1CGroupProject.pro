@@ -28,7 +28,6 @@ SOURCES += \
         Line.cpp \
         canvas.cpp \
         cont.cpp \
-        contact.cpp \
         drawwidg.cpp \
         ellipse.cpp \
         login.cpp \
@@ -45,7 +44,6 @@ HEADERS += \
         Line.h \
         canvas.h \
         cont.h \
-        contact.h \
         drawwidg.h \
         ellipse.h \
         login.h \
@@ -60,7 +58,6 @@ HEADERS += \
 
 FORMS += \
         cont.ui \
-        contact.ui \
         login.ui \
         mainwindow.ui
 

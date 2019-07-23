@@ -6,6 +6,7 @@
 #include <QPainter>
 #include <QtWidgets>
 #include "cont.h"
+#include "login.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -26,25 +27,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-//void MainWindow::paintEvent(QPaintEvent *)
-//{
-////    QPainter painter(this);
-////    painter.begin(this);
-////    painter.drawLine(QPoint(50,60), QPoint(100,100));
-////    painter.setBrush(Qt::BDiagPattern);
-////    painter.drawRect(QRect(150,120,80,30));
-////    QRect asd(10,10,10,10);
-////    painter.drawText(200,200,"hello there help");
-////    text* eqwe = new text;
-////    eqwe->setSize(20);
-////    eqwe->setCoords(200,200);
-////    eqwe->setString("hello there help");
-////    eqwe->draw();
-////    dw = new drawWidg;
-////    dw->setShape(eqwe);
-////    dw->update();
-//}
-
 void MainWindow::on_contactBtn_clicked()
 {
     cont* c = new cont();
@@ -53,5 +35,6 @@ void MainWindow::on_contactBtn_clicked()
 
 void MainWindow::on_pushButton_clicked()
 {
-
+    login* l = new login();
+    l->show();
 }

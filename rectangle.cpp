@@ -12,11 +12,11 @@
  * @param w : is a parameter of int ( Width of the Shape)
  * @param h : is the parameter of int ( Height of the Shape)
  */
-rectangle::rectangle(QPaintDevice* device, int id, shapeType s, int x1, int y1, int w, int h)
-    :shape(device, id, s), w{w}, h{h}
-{
-    setCoords(x1, y1);
-}
+//rectangle::rectangle(QPaintDevice* device, int id, shapeType s, int x1, int y1, int w, int h)
+//    :shape(device, id, s), w{w}, h{h}
+//{
+//    setCoords(x1, y1);
+//}
 
 /**
  * @brief  Function to set the Rectangle 

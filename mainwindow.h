@@ -21,7 +21,6 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-//    virtual void paintEvent(QPaintEvent* event);
 
 private slots:
     void on_contactBtn_clicked();

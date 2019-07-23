@@ -33,7 +33,7 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>50</y>
+       <y>20</y>
        <width>71</width>
        <height>28</height>
       </rect>
@@ -46,13 +46,39 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>460</y>
+       <y>450</y>
        <width>71</width>
        <height>28</height>
       </rect>
      </property>
      <property name="text">
       <string>Contact us</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>410</y>
+       <width>71</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Login</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="moveBtn">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>60</y>
+       <width>71</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Move</string>
      </property>
     </widget>
    </widget>
