@@ -1,9 +1,9 @@
-#ifndef SHAPES_H
-#define SHAPES_H
+#ifndef LINE_H
+#define LINE_H
 
 #include "shapes.h"
 
-class Line : public Shape
+class Line : public shape
 {
 public:
     Line();
@@ -29,4 +29,4 @@ private:
 
 };
 
-#endif // LINE_H
+#endif //LINE_H
