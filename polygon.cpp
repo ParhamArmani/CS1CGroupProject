@@ -44,7 +44,7 @@ void Polygon::draw(QPaintDevice* device) const
  * @return Area(Double) : Area of a polygon
  */
 
-double Polygon::getArea()const
+double Polygon::area()const
 {
     double area = 0;
 
@@ -63,7 +63,7 @@ double Polygon::getArea()const
  * 
  * @return Perimeter:  is value of type Double , represents the Perimeter of the Polygon.
  */
-double Polygon::getPerimeter()const
+double Polygon::perimeter()const
 {
     double perimeter = 0;
 

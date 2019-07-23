@@ -18,8 +18,8 @@ public:
 
     void draw();
 
-    double getArea();
-    double getPerimeter();
+    double area();
+    double perimeter();
 
 private:
     int startX;
