@@ -1,33 +1,33 @@
 #include "Line.h"
 
-Line::Line() : shape()
+//Line::Line() : shape()
+//{}
+
+Line::Line(QPaintDevice* device, int id, shapeType s)
+    :shape(device, id, s)
 {
 
 }
 
-Line::Line(QPaintDevice* device, int id)
-    :shape(device, id, shapeType::line)
-{
-
-}
-
-Line::Line(QPaintDevice* device, int id, int x, int y)
-    :shape(device, id, shapeType::line)
+Line::Line(QPaintDevice* device, int id, shapeType s, int x, int y)
+    :shape(device, id, s)
 {
     setCoords(x, y);
 }
 
-void Line::draw(QPaintDevice* device)
+Line::~Line(){}
+
+void Line::draw()
 {
     getQpainter().drawLine(startX, startY, endX, endY);
 }
 
-double Line::getArea()
+double Line::area()
 {
     return -1;
 }
 
-double Line::getPerimeter()
+double Line::perimeter()
 {
     return -1;
 }

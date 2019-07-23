@@ -228,18 +228,15 @@ void ShapeParser::loadLine(QPaintDevice *device, int id)
     /**************************
      * DATA APPLICATION TIIIME
      **************************/
-    Line *tempLine = new Line(device, id, tempX1, tempY1, tempX2, tempY2);
+    Line *tempLine = new Line(device, id, shape::shapeType::line, tempX1, tempY1);
 
-    tempText->setWidth(tempWidth);
-    tempText->setHeight(tempHeight);
-    tempText->setPenColor(Q_TextColor);
-    tempText->setAlignment(Q_TextAlignment);
-    tempText->setSize(tempTextPointSize_INT);
-    tempText->setFont(Q_TextFontFamily);
-    tempText->setStyle(Q_TextFontStyle);
-    tempText->setWeight(Q_TextFontWeight);
+    tempLine->setPenColor(Q_PenColor);
+    tempLine->setPenWidth(tempPenWidth_INT);
+    tempLine->setPenStyle(Q_PenStyle);
+    tempLine->setPenCap(Q_PenCapStyle);
+    tempLine->setPenJoint(Q_PenJoinStyle);
 
-    shapeList.push_back(tempText);
+    shapeList.push_back(tempLine);
 }
 
 void ShapeParser::loadText(QPaintDevice *device, int id)

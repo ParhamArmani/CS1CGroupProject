@@ -28,6 +28,7 @@ SOURCES += \
         Line.cpp \
         canvas.cpp \
         contact.cpp \
+        drawwidg.cpp \
         login.cpp \
         main.cpp \
         mainwindow.cpp \
@@ -40,6 +41,7 @@ HEADERS += \
         Line.h \
         canvas.h \
         contact.h \
+        drawwidg.h \
         login.h \
         mainwindow.h \
         rectangle.h \
@@ -57,3 +59,7 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES += \
+    shape_input_file_specs.txt \
+    shapes.txt
