@@ -30,6 +30,7 @@ public:
     void setWeight(QFont::Weight);
     void setWidth(int);
     void setHeight(int);
+    void setString(QString);
 };
 
 #endif // TEXT_H

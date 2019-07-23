@@ -2,7 +2,12 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QPainter>
+#include "drawwidg.h"
+#include "vector.h"
+#include "shapes.h"
+#include "text.h"
+
+using namespace CS1C;
 
 namespace Ui {
 class MainWindow;
@@ -25,6 +30,10 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    drawWidg* dw;
+    shape* s;
+    vector<shape*> shapeList;
+    bool access;
 };
 
 #endif // MAINWINDOW_H

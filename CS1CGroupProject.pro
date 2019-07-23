@@ -26,6 +26,8 @@ CONFIG += c++11
 
 SOURCES += \
         canvas.cpp \
+	contact.cpp \
+	drawwidg.cpp \
         login.cpp \
         main.cpp \
         mainwindow.cpp \
@@ -36,11 +38,13 @@ SOURCES += \
 
 HEADERS += \
         canvas.h \
+	contact.h \
+	drawwidg.h \
         login.h \
         mainwindow.h \
         rectangle.h \
         shapeparser.h \
-        shapes.h \
+	shapes.h \
         text.h \
         vector.h
 
@@ -53,3 +57,6 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES += \
+	shapes.txt
