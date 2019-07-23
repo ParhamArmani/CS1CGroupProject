@@ -25,7 +25,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+        Line.cpp \
         canvas.cpp \
+        contact.cpp \
         login.cpp \
         main.cpp \
         mainwindow.cpp \
@@ -35,7 +37,9 @@ SOURCES += \
         text.cpp
 
 HEADERS += \
+        Line.h \
         canvas.h \
+        contact.h \
         login.h \
         mainwindow.h \
         rectangle.h \

@@ -1,24 +1,25 @@
-#include "line.h"
+#include "Line.h"
 
 Line::Line() : shape()
 {
 
 }
 
-Line::Line(QPaintDevice* device, int id, shapeType::line)
+Line::Line(QPaintDevice* device, int id)
+    :shape(device, id, shapeType::line)
 {
 
 }
 
-Line::Line(QPaintDevice* device, int id, shapeType::line, int x, int y)
+Line::Line(QPaintDevice* device, int id, int x, int y)
+    :shape(device, id, shapeType::line)
 {
     setCoords(x, y);
 }
 
 void Line::draw(QPaintDevice* device)
 {
-    auto paint = getPainter(device);
-    paint -> drawLine(startX, startY, endX, endY)
+    getQpainter().drawLine(startX, startY, endX, endY);
 }
 
 double Line::getArea()

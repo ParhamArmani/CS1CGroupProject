@@ -44,7 +44,7 @@ void text::setStyle(QFont::Style)
     font.setStyle(QFont::Style());
     getQpainter().setFont(font);
 }
-void text::setWeight(QFont::Weight())
+void text::setWeight(QFont::Weight)
 {
     font.setWeight(QFont::Weight());
     getQpainter().setFont(font);

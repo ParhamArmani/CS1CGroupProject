@@ -1,13 +1,13 @@
 #include "rectangle.h"
 
 
-rectangle::rectangle(QPaintDevice* device, int id)
-    :shape(device, id, shapeType::rectangle)
+rectangle::rectangle(QPaintDevice* device, int id, shapeType s)
+    :shape(device, id, s)
 {
 
 }
-rectangle::rectangle(QPaintDevice* device, int id, int x1, int y1, int w, int h)
-    :shape(device,id,shapeType::rectangle), w{w}, h{h}
+rectangle::rectangle(QPaintDevice* device, int id, shapeType s, int x1, int y1, int w, int h)
+    :shape(device, id, s), w{w}, h{h}
 {
     setCoords(x1, y1);
 }

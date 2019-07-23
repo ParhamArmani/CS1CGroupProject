@@ -1,8 +1,5 @@
 #include "shapeparser.h"
 
-std::ifstream load;
-CS1C::vector<shape*> shapeList;
-
 ShapeParser::ShapeParser()
 {
 
@@ -11,6 +8,11 @@ ShapeParser::ShapeParser()
 ShapeParser::~ShapeParser()
 {
 
+}
+
+CS1C::vector<shape*> ShapeParser::getShapeList() const
+{
+    return this->shapeList;
 }
 
 void ShapeParser::loadFile()
@@ -66,8 +68,8 @@ void ShapeParser::loadFile()
 			switch (TEMPshapeType)
 			{
 			case LINE:
-                cout << "[CONSOLE] Shape is a line" << endl;
-				break;
+                loadLine(device, id);
+                break;
 			case POLYLINE:
                 cout << "[CONSOLE] Shape is a polyline" << endl;
 				break;
@@ -91,6 +93,153 @@ void ShapeParser::loadFile()
 			}
 		}
 	}
+}
+
+void ShapeParser::loadLine(QPaintDevice *device, int id)
+{
+    cout << "[CONSOLE] Shape is a line" << endl;
+    /*****************************
+     * DATA INITIALIZATION TIIIME
+     *****************************/
+    string textProperty = "";
+
+    string tempCoord = "";
+        int tempX1 = 0;
+        int tempY1 = 0;
+        int tempX2 = 0;
+        int tempY2 = 0;
+
+    string tempPenColor = "";
+    Qt::GlobalColor Q_PenColor;
+
+    string tempPenWidth_STRING = "";
+    int tempPenWidth_INT = 0;
+
+    string tempPenStyle = "";
+    Qt::PenStyle Q_PenStyle;
+
+    string tempPenCapStyle = "";
+    Qt::PenCapStyle Q_PenCapStyle;
+
+    string tempPenJoinStyle = "";
+    Qt::PenJoinStyle Q_PenJoinStyle;
+
+    do
+    {
+        //reads next line up to the colon, also ignores the following space
+        //finds the property that is pulled and then applies to the respective property of the object
+        getline(load, textProperty, ':');
+        load.ignore(1, ' ');
+
+
+        /**coordinates and width/height calculations**/
+        if(textProperty == "ShapeDimensions")
+        {
+            getline(load, tempCoord, ',');
+            load.ignore(1, ' ');
+            std::istringstream x1convert(tempCoord);
+            x1convert >> tempX1;
+
+            getline(load, tempCoord, ',');
+            load.ignore(1, ' ');
+            std::istringstream y1convert(tempCoord);
+            y1convert >> tempY1;
+
+            getline(load, tempCoord, ',');
+            load.ignore(1, ' ');
+            std::istringstream x2convert(tempCoord);
+            x2convert >> tempX2;
+
+            getline(load, tempCoord, '\n');
+            std::istringstream y2convert(tempCoord);
+            y2convert >> tempY2;
+
+            cout << "[Shape Parser] Line: " << textProperty
+                                << " | X1: " << tempX1
+                                << " | Y1: " << tempY1
+                                << " | X2: " << tempX2
+                                << " | Y2: " << tempY2 << endl;
+        }
+
+        /**COLOR of the pen**/
+        if(textProperty == "PenColor")
+        {
+            getline(load, tempPenColor, '\n');
+            cout << "[Shape Parser] Line: " << tempPenColor << endl;
+
+            if(tempPenColor == "white")        Q_PenColor = Qt::white;
+            else if(tempPenColor == "black")   Q_PenColor = Qt::black;
+            else if(tempPenColor == "red")     Q_PenColor = Qt::red;
+            else if(tempPenColor == "green")   Q_PenColor = Qt::green;
+            else if(tempPenColor == "blue")    Q_PenColor = Qt::blue;
+            else if(tempPenColor == "cyan")    Q_PenColor = Qt::cyan;
+            else if(tempPenColor == "magenta") Q_PenColor = Qt::magenta;
+            else if(tempPenColor == "yellow")  Q_PenColor = Qt::yellow;
+            else if(tempPenColor == "gray")    Q_PenColor = Qt::gray;
+        }
+
+        /**pen WIDTH**/
+        if(textProperty == "PenWidth")
+        {
+            getline(load, tempPenWidth_STRING, '\n');
+            std::istringstream penColorConvert(tempPenWidth_STRING);
+            penColorConvert >> tempPenWidth_INT;
+            cout << "[Shape Parser] Line: " << tempPenWidth_INT << endl;
+
+        }
+
+        /**pen STYLE**/
+        if(textProperty == "PenStyle")
+        {
+            getline(load, tempPenStyle, '\n');
+            cout << "[Shape Parser] Line: " << tempPenStyle << endl;
+            if(tempPenStyle == "NoPen")                 Q_PenStyle = Qt::PenStyle::NoPen;
+            else if(tempPenStyle == "SolidLine")        Q_PenStyle = Qt::PenStyle::SolidLine;
+            else if(tempPenStyle == "DashLine")         Q_PenStyle = Qt::PenStyle::DashLine;
+            else if(tempPenStyle == "DotLine")          Q_PenStyle = Qt::PenStyle::DotLine;
+            else if(tempPenStyle == "DashDotLine")      Q_PenStyle = Qt::PenStyle::DashDotLine;
+            else if(tempPenStyle == "DashDotDotLine")   Q_PenStyle = Qt::PenStyle::DashDotDotLine;
+        }
+
+        /**pen CAP STYLE**/
+        if(textProperty == "PenCapStyle")
+        {
+            getline(load, tempPenCapStyle, '\n');
+            cout << "[Shape Parser] Line: " << tempPenCapStyle << endl;
+            if(tempPenCapStyle == "FlatCap")        Q_PenCapStyle = Qt::PenCapStyle::FlatCap;
+            else if(tempPenCapStyle == "SquareCap") Q_PenCapStyle = Qt::PenCapStyle::SquareCap;
+            else if(tempPenCapStyle == "RoundCap")  Q_PenCapStyle = Qt::PenCapStyle::RoundCap;
+        }
+
+        /**pen JOIN STYLE**/
+        if(textProperty == "PenJoinStyle")
+        {
+            getline(load, tempPenJoinStyle, '\n');
+            cout << "[Shape Parser] Line: " << tempPenJoinStyle << endl;
+            if(tempPenJoinStyle == "MiterJoin")         Q_PenJoinStyle = Qt::PenJoinStyle::MiterJoin;
+            else if(tempPenJoinStyle == "BevelJoin")    Q_PenJoinStyle = Qt::PenJoinStyle::BevelJoin;
+            else if(tempPenJoinStyle == "RoundJoin")    Q_PenJoinStyle = Qt::PenJoinStyle::RoundJoin;
+        }
+
+    }
+
+    while(textProperty.compare("PenJoinStyle") != 0);
+
+    /**************************
+     * DATA APPLICATION TIIIME
+     **************************/
+    Line *tempLine = new Line(device, id, tempX1, tempY1, tempX2, tempY2);
+
+    tempText->setWidth(tempWidth);
+    tempText->setHeight(tempHeight);
+    tempText->setPenColor(Q_TextColor);
+    tempText->setAlignment(Q_TextAlignment);
+    tempText->setSize(tempTextPointSize_INT);
+    tempText->setFont(Q_TextFontFamily);
+    tempText->setStyle(Q_TextFontStyle);
+    tempText->setWeight(Q_TextFontWeight);
+
+    shapeList.push_back(tempText);
 }
 
 void ShapeParser::loadText(QPaintDevice *device, int id)
@@ -189,7 +338,7 @@ void ShapeParser::loadText(QPaintDevice *device, int id)
             getline(load, tempTextColor, '\n');
             cout << "[Shape Parser] Text: " << tempTextColor << endl;
 
-            if(tempTextColor == "white")         Q_TextColor = Qt::white;
+            if(tempTextColor == "white")        Q_TextColor = Qt::white;
             else if(tempTextColor == "black")   Q_TextColor = Qt::black;
             else if(tempTextColor == "red")     Q_TextColor = Qt::red;
             else if(tempTextColor == "green")   Q_TextColor = Qt::green;
@@ -221,7 +370,7 @@ void ShapeParser::loadText(QPaintDevice *device, int id)
 
         }
 
-        /**text font STYLE**/
+        /**text font FAMILY**/
         if(textProperty == "TextFontFamily")
         {
             getline(load, tempTextFontFamily, '\n');
@@ -229,6 +378,7 @@ void ShapeParser::loadText(QPaintDevice *device, int id)
             Q_TextFontFamily = QString::fromStdString(tempTextFontFamily);
         }
 
+        /**text font STYLE**/
         if(textProperty == "TextFontStyle")
         {
             getline(load, tempTextFontStyle, '\n');
@@ -238,7 +388,7 @@ void ShapeParser::loadText(QPaintDevice *device, int id)
             else if (tempTextFontStyle == "StyleOblique")   Q_TextFontStyle = QFont::StyleOblique;
         }
 
-
+        /**text font WEIGHT**/
         if(textProperty == "TextFontWeight")
         {
             getline(load, tempTextFontWeight, '\n');
@@ -248,26 +398,25 @@ void ShapeParser::loadText(QPaintDevice *device, int id)
             else if(tempTextFontWeight == "Normal") Q_TextFontWeight = QFont::Normal;
             else if(tempTextFontWeight == "Bold")   Q_TextFontWeight = QFont::Bold;
         }
-
-    /**************************
-     * DATA APPLICATION TIIIME
-     **************************/
-        text *tempText = new text(device, id, shape::shapeType::text, Q_ActualText);
-
-        tempText->setWidth(tempWidth);
-        tempText->setHeight(tempHeight);
-        tempText->setPenColor(Q_TextColor);
-        tempText->setAlignment(Q_TextAlignment);
-        tempText->setSize(tempTextPointSize_INT);
-        tempText->setFont(Q_TextFontFamily);
-        tempText->setStyle(Q_TextFontStyle);
-        tempText->setWeight(Q_TextFontWeight);
-
-        shapeList.push_back(tempText);
     }
 
     while(textProperty.compare("TextFontWeight") != 0);
 
+    /**************************
+     * DATA APPLICATION TIIIME
+     **************************/
+    text *tempText = new text(device, id, shape::shapeType::text, Q_ActualText);
+
+    tempText->setWidth(tempWidth);
+    tempText->setHeight(tempHeight);
+    tempText->setPenColor(Q_TextColor);
+    tempText->setAlignment(Q_TextAlignment);
+    tempText->setSize(tempTextPointSize_INT);
+    tempText->setFont(Q_TextFontFamily);
+    tempText->setStyle(Q_TextFontStyle);
+    tempText->setWeight(Q_TextFontWeight);
+
+    shapeList.push_back(tempText);
 }
 
 int ShapeParser::calculateWidth(int x1, int x2)
