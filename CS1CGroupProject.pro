@@ -29,6 +29,7 @@ SOURCES += \
         canvas.cpp \
         contact.cpp \
         drawwidg.cpp \
+        ellipse.cpp \
         login.cpp \
         main.cpp \
         mainwindow.cpp \
@@ -42,6 +43,7 @@ HEADERS += \
         canvas.h \
         contact.h \
         drawwidg.h \
+        ellipse.h \
         login.h \
         mainwindow.h \
         rectangle.h \
