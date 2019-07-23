@@ -6,7 +6,6 @@
 class rectangle : public shape
 {
 public:
-    rectangle(QPaintDevice* device = nullptr,int id = -1, shapeType s = shapeType::rectangle);    //defualt constructor
     rectangle(QPaintDevice* device = nullptr,int id = -1, shapeType s = shapeType::rectangle, int x1 = 0, int y1 = 0, int w = 1, int h = 1);    //defualt constructor
     ~rectangle();
 
@@ -16,8 +15,8 @@ public:
 
     void draw();
     void move(int x2,int y2);
-    double perimeter();
-    double area();
+    double perimeter()const;
+    double area()const;
 
 private:
     QRect rect;
