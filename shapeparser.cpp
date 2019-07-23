@@ -1,6 +1,7 @@
 #include "shapeparser.h"
 
 std::ifstream load;
+CS1C::vector<shape*> shapeList;
 
 ShapeParser::ShapeParser()
 {
@@ -14,7 +15,6 @@ ShapeParser::~ShapeParser()
 
 void ShapeParser::loadFile()
 {
-    CS1C::vector<shape*> shapeList;
     QPaintDevice* device;
 
 	string shapeProperty;
@@ -87,18 +87,15 @@ void ShapeParser::loadFile()
                 cout << "[CONSOLE] Shape is a circle" << endl;
 				break;
 			case TEXT:
-
-                loadText();
+                loadText(device, id);
 			}
 		}
 	}
 }
 
-void ShapeParser::loadText()
+void ShapeParser::loadText(QPaintDevice *device, int id)
 {
     cout << "[CONSOLE] Shape is a text" << endl;
-    //text *tempText = new text(device, id, shape::shapeType::text, "");
-
     /*****************************
      * DATA INITIALIZATION TIIIME
      *****************************/
@@ -113,20 +110,29 @@ void ShapeParser::loadText()
         int tempHeight = 0;
 
     string tempActualText = "";
+    QString Q_ActualText;
 
     string tempTextColor = "";
+    Qt::GlobalColor Q_TextColor;
 
     string tempTextAlignment = "";
+    Qt::AlignmentFlag Q_TextAlignment;
 
     string tempTextPointSize_STRING = "";
         int tempTextPointSize_INT = 0;
 
     string tempTextFontFamily = "";
+    QString Q_TextFontFamily;
 
     string tempTextFontStyle = "";
+    QFont::Style Q_TextFontStyle;
 
     string tempTextFontWeight = "";
+    QFont::Weight Q_TextFontWeight;
 
+    /*************************
+     * DATA EXTRACTION TIIIME
+     *************************/
     do
     {
         //reads next line up to the colon, also ignores the following space
@@ -134,9 +140,7 @@ void ShapeParser::loadText()
         getline(load, textProperty, ':');
         load.ignore(1, ' ');
 
-    /*************************
-     * DATA EXTRACTION TIIIME
-     *************************/
+
         /**coordinates and width/height calculations**/
         if(textProperty == "ShapeDimensions")
         {
@@ -176,6 +180,7 @@ void ShapeParser::loadText()
         {
             getline(load, tempActualText, '\n');
             cout << "[Shape Parser] Text: \'" << tempActualText << "\'" << endl;
+            Q_ActualText = QString::fromStdString(tempActualText);
         }
 
         /**COLOR of the text**/
@@ -184,6 +189,15 @@ void ShapeParser::loadText()
             getline(load, tempTextColor, '\n');
             cout << "[Shape Parser] Text: " << tempTextColor << endl;
 
+            if(tempTextColor == "white")         Q_TextColor = Qt::white;
+            else if(tempTextColor == "black")   Q_TextColor = Qt::black;
+            else if(tempTextColor == "red")     Q_TextColor = Qt::red;
+            else if(tempTextColor == "green")   Q_TextColor = Qt::green;
+            else if(tempTextColor == "blue")    Q_TextColor = Qt::blue;
+            else if(tempTextColor == "cyan")    Q_TextColor = Qt::cyan;
+            else if(tempTextColor == "magenta") Q_TextColor = Qt::magenta;
+            else if(tempTextColor == "yellow")  Q_TextColor = Qt::yellow;
+            else if(tempTextColor == "gray")    Q_TextColor = Qt::gray;
         }
 
         /**ALIGNMENT of the text**/
@@ -191,7 +205,10 @@ void ShapeParser::loadText()
         {
             getline(load, tempTextAlignment, '\n');
             cout << "[Shape Parser] Text: " << tempTextAlignment << endl;
-
+            if(tempTextAlignment == "AlignLeft")        Q_TextAlignment = Qt::AlignmentFlag::AlignLeft;
+            else if(tempTextAlignment == "AlignRight")  Q_TextAlignment = Qt::AlignmentFlag::AlignRight;
+            else if(tempTextAlignment == "AlignTop")    Q_TextAlignment = Qt::AlignmentFlag::AlignTop;
+            else if(tempTextAlignment == "AlignBottom") Q_TextAlignment = Qt::AlignmentFlag::AlignCenter;
         }
 
         /**text POINT SIZE**/
@@ -209,14 +226,16 @@ void ShapeParser::loadText()
         {
             getline(load, tempTextFontFamily, '\n');
             cout << "[Shape Parser] Text: " << tempTextFontFamily << endl;
-
+            Q_TextFontFamily = QString::fromStdString(tempTextFontFamily);
         }
 
         if(textProperty == "TextFontStyle")
         {
             getline(load, tempTextFontStyle, '\n');
             cout << "[Shape Parser] Text: " << tempTextFontStyle << endl;
-
+            if(tempTextFontStyle == "StyleNormal")          Q_TextFontStyle = QFont::StyleNormal;
+            else if (tempTextFontStyle == "StyleItalic")    Q_TextFontStyle = QFont::StyleItalic;
+            else if (tempTextFontStyle == "StyleOblique")   Q_TextFontStyle = QFont::StyleOblique;
         }
 
 
@@ -224,25 +243,27 @@ void ShapeParser::loadText()
         {
             getline(load, tempTextFontWeight, '\n');
             cout << "[Shape Parser] Text: " << tempTextFontWeight << endl;
-
+            if(tempTextFontWeight == "Thin")        Q_TextFontWeight = QFont::Thin;
+            else if(tempTextFontWeight == "Light")  Q_TextFontWeight = QFont::Light;
+            else if(tempTextFontWeight == "Normal") Q_TextFontWeight = QFont::Normal;
+            else if(tempTextFontWeight == "Bold")   Q_TextFontWeight = QFont::Bold;
         }
 
     /**************************
      * DATA APPLICATION TIIIME
      **************************/
-        /**
+        text *tempText = new text(device, id, shape::shapeType::text, Q_ActualText);
 
         tempText->setWidth(tempWidth);
         tempText->setHeight(tempHeight);
-        //actual text is set in object initialization
-        //???tempText->setColor(tempTextColor);
-        tempText->setAlignment(tempTextAlignment);
-        //???tempText->setPointSize(tempTextPointSize_STRING);
-        tempText->setFont(tempTextFontFamily);
-        tempText->setStyle(tempTextFontStyle);
-        tempText->setWeight();
+        tempText->setPenColor(Q_TextColor);
+        tempText->setAlignment(Q_TextAlignment);
+        tempText->setSize(tempTextPointSize_INT);
+        tempText->setFont(Q_TextFontFamily);
+        tempText->setStyle(Q_TextFontStyle);
+        tempText->setWeight(Q_TextFontWeight);
 
-        **/
+        shapeList.push_back(tempText);
     }
 
     while(textProperty.compare("TextFontWeight") != 0);

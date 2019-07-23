@@ -22,9 +22,9 @@ public:
 	~ShapeParser();
 
 	void loadFile();
-    void loadText();
     int calculateWidth(int x1, int x2);
     int calculateHeight(int y1, int y2);
+    void loadText(QPaintDevice *device, int id);
 
 private:
 	//Line, Polyline, Polygon, Rectangle, Square[rectangle, l=w], Ellipse, Circle[ellipse, a=b], Text

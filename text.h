@@ -27,7 +27,7 @@ public:
     void setSize(int);
     void setFont(QString);
     void setStyle(QFont::Style);
-    void setWeight(QFont::Weight());
+    void setWeight(QFont::Weight);
     void setWidth(int);
     void setHeight(int);
 };
