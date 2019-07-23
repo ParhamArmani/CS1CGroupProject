@@ -6,8 +6,8 @@
 class rectangle : public shape
 {
 public:
-    rectangle(QPaintDevice* device = nullptr,int id = -1);    //defualt constructor
-    rectangle(QPaintDevice* device = nullptr,int id = -1, int x1 = 0, int y1 = 0, int w = 1, int h = 1);    //defualt constructor
+//    rectangle();    //defualt constructor
+//    rectangle(QPaintDevice* device = nullptr,int id = -1, int x1 = 0, int y1 = 0, int w = 1, int h = 1);    //defualt constructor
     ~rectangle();
 
     void set_rect(const QRect& rect);
