@@ -22,7 +22,7 @@ public:
 	~ShapeParser();
 
 	void loadFile();
-    void loadText(int id);
+    void loadText();
     int calculateWidth(int x1, int x2);
     int calculateHeight(int y1, int y2);
 

@@ -31,6 +31,7 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
         rectangle.cpp \
+        shapeparser.cpp \
         shapes.cpp \
         text.cpp
 
@@ -40,6 +41,7 @@ HEADERS += \
         login.h \
         mainwindow.h \
         rectangle.h \
+        shapeparser.h \
         shapes.h \
         text.h \
         vector.h
