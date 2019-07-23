@@ -1,7 +1,7 @@
 #include "text.h"
 
-text::text() : shape()
-{}
+//text::text() : shape()
+//{}
 text::text(QPaintDevice* device, int id, shapeType s, QString txt) : shape(device, id, s)
 {
     str = txt;
@@ -10,7 +10,10 @@ text::~text()
 {}
 void text::draw()
 {
-    getQpainter().drawText(QRect(), alignment, str);
+    QRect rect;
+    rect.setX(getX());
+    rect.setY(getY());
+    getQpainter().drawText(rect, alignment, str);
 }
 void text::move(const int newX, const int newY)
 {
@@ -56,4 +59,8 @@ void text::setWidth(int width)
 void text::setHeight(int height)
 {
     h = height;
+}
+void text::setString(QString txt)
+{
+    str = txt;
 }

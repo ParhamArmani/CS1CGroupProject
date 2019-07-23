@@ -14,7 +14,7 @@ private:
     int h;
 
 public:
-    text();
+//    text();
     text(QPaintDevice* device = nullptr, int id = -1, shapeType s = shapeType::text, QString str = "Hello");
     ~text();
 
@@ -30,6 +30,7 @@ public:
     void setWeight(QFont::Weight);
     void setWidth(int);
     void setHeight(int);
+    void setString(QString);
 };
 
 #endif // TEXT_H
