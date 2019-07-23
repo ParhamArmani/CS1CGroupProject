@@ -1,17 +1,5 @@
 #include "rectangle.h"
 
-/**
- * @brief Construct a new rectangle::rectangle object
- * 
- * @param device: is a parameter of QPaintDevice Type
- * @param id : is a Parameter of int Type
- * @param s : is a parameter of ShapeType
- */
-rectangle::rectangle(QPaintDevice* device, int id, shapeType s)
-    :shape(device, id, s)
-{
-
-}
 
 /**
  * @brief Construct a new rectangle::rectangle object
@@ -92,7 +80,7 @@ void rectangle::move(const int newX, const int newY)
  * 
  * @return AREA  : area of the rectangle width * height
  */
-double rectangle::area()
+double rectangle::area()const
 {
     double area;
     rect.width();
@@ -106,7 +94,7 @@ double rectangle::area()
  * 
  * @return Perimeter : Perimeter of the rectangle 2(width + height)
  */
-double rectangle::perimeter()
+double rectangle::perimeter()const
 {
     double perim;
     perim = (rect.width() * 2) + (rect.height()*2);
@@ -157,7 +145,7 @@ void ellipse::move(const int newX, const int newY)
  * 
  * @return Area(Double) : Based on the formula Pi*(width/2)*(height/2)
  */
-double ellipse::area()
+double ellipse::area()const
 {
     double area;
     //rect.width();
@@ -171,7 +159,7 @@ double ellipse::area()
  * 
  * @return Perimeter: Based on pi/2* width^2 + height^2
  */
-double ellipse::perimeter()
+double ellipse::perimeter()const
 {
     double perim;
 
