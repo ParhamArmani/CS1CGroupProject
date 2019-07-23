@@ -34,6 +34,8 @@ SOURCES += \
         login.cpp \
         main.cpp \
         mainwindow.cpp \
+        polygon.cpp \
+        polyline.cpp \
         rectangle.cpp \
         shapeparser.cpp \
         shapes.cpp \
@@ -48,6 +50,8 @@ HEADERS += \
         ellipse.h \
         login.h \
         mainwindow.h \
+        polygon.h \
+        polyline.h \
         rectangle.h \
         shapeparser.h \
         shapes.h \
