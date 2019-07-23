@@ -6,7 +6,7 @@
 using namespace std;
 
 
-class Polyline : public shape
+class Polyline : public Shape
 {
 public:
     Polyline(vector<QPoint> points = {}, const QBrush &brush = {}, const QPen &pen ={});
@@ -15,10 +15,10 @@ public:
     Polyline(Polyline &&move)noexcept;
 
 
-    void draw();
+    void draw(QPaintDevice* device)const override;
 
-    double area()const override;
-    double perimeter()const override;
+    double getArea()const override;
+    double getPerimeter()const override;
 
     void setPoint(const QPoint &point);
     void insertPoint(const QPoint &point);

@@ -1,7 +1,8 @@
 #include "contact.h"
 #include "ui_contact.h"
 
-contact::contact(QWidget *parent) :
+
+contact::contact(QWidget *parent):
     QDialog(parent),
     ui(new Ui::contact)
 {

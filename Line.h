@@ -1,14 +1,14 @@
-#ifndef SHAPES_H
-#define SHAPES_H
+#ifndef LINE_H
+#define LINE_H
 
 #include "shapes.h"
 
-class Line : public Shape
+class Line : public shape
 {
 public:
-    Line();
-    Line(QPaintDevice* device = nullptr, int id = -1);
-    Line(QPaintDevice* device = nullptr, int id = -1, int x =0, int y=0);
+    //Line();
+    Line(QPaintDevice* device = nullptr, int id = -1, shapeType s = shapeType::line);
+    Line(QPaintDevice* device = nullptr, int id = -1, shapeType s = shapeType::line, int x =0, int y=0);
     ~Line();
 
     void setEnd(int endX, int endY);
@@ -16,7 +16,7 @@ public:
 
     void move(const int x, const int y);
 
-    void draw(QPaintDevice* device);
+    void draw();
 
     double getArea();
     double getPerimeter();
@@ -29,4 +29,4 @@ private:
 
 };
 
-#endif // LINE_H
+#endif //LINE_H

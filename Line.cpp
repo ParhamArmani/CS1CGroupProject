@@ -1,36 +1,78 @@
-#include "line.h"
+#include "Line.h"
 
-Line::Line() : shape()
+//Line::Line() : shape()
+//{}
+
+/**
+ * @brief Construct a new Line:: Line object
+ * 
+ * @param device: is a parameter of the type QPainterDevice
+ * @param id : is the parameter of the Type int
+ * @param s : is the parameter of the type ShapeType
+ */
+Line::Line(QPaintDevice* device, int id, shapeType s)
+    :shape(device, id, s)
 {
 
 }
 
-Line::Line(QPaintDevice* device, int id, shapeType::line)
-{
-
-}
-
-Line::Line(QPaintDevice* device, int id, shapeType::line, int x, int y)
+/**
+ * @brief Construct a new Line:: Line object
+ * 
+ * @param device :is a parameter of the type QPainterDevice
+ * @param id :is the parameter of the Type int
+ * @param s :is the parameter of the Type ShapeType
+ * @param x :is the parameter of the Type int
+ * @param y :is the parameter of the Type int
+ */
+Line::Line(QPaintDevice* device, int id, shapeType s, int x, int y)
+    :shape(device, id, s)
 {
     setCoords(x, y);
 }
 
-void Line::draw(QPaintDevice* device)
+/**
+ * @brief Destroy the Line:: Line object
+ * 
+ * 
+ */
+Line::~Line(){}
+
+/**
+ * @brief Function to draw the line. 
+ * Pre: Recieves no parameters
+ */
+void Line::draw()
 {
-    auto paint = getPainter(device);
-    paint -> drawLine(startX, startY, endX, endY)
+    getQpainter().drawLine(startX, startY, endX, endY);
 }
 
-double Line::getArea()
+/**
+ * @brief Function to return the Area of the line (Default -1)
+ * 
+ * @return -1 :is a number of type Double since line doesn't have an area 
+ */
+double Line::area()
 {
     return -1;
 }
 
-double Line::getPerimeter()
+/**
+ * @brief Function to return the Perimeter of the line (Default -1)
+ * 
+ * @return -1 :is a number of type Double since line doesn't have an perimeter 
+ */
+double Line::perimeter()
 {
     return -1;
 }
 
+/**
+ * @brief Function to move the line object to the new coordinate
+ * 
+ * @param x : is the x coorndinate of type int
+ * @param y : is the y coorndinate of type int
+ */
 void Line::move(const int x, const int y)
 {
     setCoords(x,y);

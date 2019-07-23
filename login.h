@@ -1,6 +1,6 @@
 #ifndef LOGIN_H
 #define LOGIN_H
-
+#include "contact.h"
 #include <QDialog>
 
 namespace Ui {
@@ -15,8 +15,14 @@ public:
     explicit login(QWidget *parent = nullptr);
     ~login();
 
+private slots:
+    void on_pushButton_clicked();
+
+    void on_pushButton_2_clicked();
+
 private:
     Ui::login *ui;
+    contact *contact;
 };
 
 #endif // LOGIN_H
