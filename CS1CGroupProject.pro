@@ -26,20 +26,20 @@ CONFIG += c++11
 
 SOURCES += \
         canvas.cpp \
-        contact.cpp \
         login.cpp \
         main.cpp \
         mainwindow.cpp \
         rectangle.cpp \
+        shapeparser.cpp \
         shapes.cpp \
         text.cpp
 
 HEADERS += \
         canvas.h \
-        contact.h \
         login.h \
         mainwindow.h \
         rectangle.h \
+        shapeparser.h \
         shapes.h \
         text.h \
         vector.h
