@@ -6,6 +6,7 @@
 #include "vector.h"
 #include "shapes.h"
 #include "text.h"
+#include "shapeparser.h"
 
 using namespace CS1C;
 
@@ -21,7 +22,6 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-
 private slots:
     void on_contactBtn_clicked();
 
@@ -32,6 +32,7 @@ private:
     drawWidg* dw;
     shape* s;
     vector<shape*> shapeList;
+    ShapeParser parser;
     bool access;
 };
 

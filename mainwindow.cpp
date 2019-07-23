@@ -7,19 +7,22 @@
 #include <QtWidgets>
 #include "cont.h"
 #include "login.h"
+#include "shapeparser.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+//    parser.loadFile();
+//    shapeList = parser.getShapeList();
     ui->canvas->setGeometry(110, 10, 1000,500);
     QPalette pal = palette();
     pal.setColor(QPalette::Background, Qt::white);
     ui->canvas->setAutoFillBackground(true);
     ui->canvas->setPalette(pal);
+//    ui->canvas->drawShapes();
     ui->canvas->update();
-
 }
 
 MainWindow::~MainWindow()

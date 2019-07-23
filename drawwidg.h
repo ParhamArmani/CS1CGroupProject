@@ -3,6 +3,9 @@
 
 #include <QWidget>
 #include "shapes.h"
+#include "vector.h"
+
+using namespace CS1C;
 
 
 class drawWidg : public QWidget
@@ -19,6 +22,7 @@ protected:
 public slots:
 public:
     shape* shapePtr;
+    vector<shape*> shapeList;
 };
 
 #endif // DRAWWIDG_H
