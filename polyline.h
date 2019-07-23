@@ -17,8 +17,8 @@ public:
 
     void draw(QPaintDevice* device)const override;
 
-    double getArea()const override;
-    double getPerimeter()const override;
+    double area()const override;
+    double perimeter()const override;
 
     void setPoint(const QPoint &point);
     void insertPoint(const QPoint &point);
