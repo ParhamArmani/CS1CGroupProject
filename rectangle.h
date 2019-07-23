@@ -36,8 +36,8 @@ public:
 
     void draw();
     void move(int x2,int y2);
-    double perimeter();
-    double area();
+    double perimeter() const;
+    double area() const;
 
 private:
     QRect rect;
