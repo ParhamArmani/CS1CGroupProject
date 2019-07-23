@@ -23,7 +23,6 @@ using namespace std;
      */
     Polyline::Polyline(Polyline &&move)noexcept
     {
-        swap(move);
         swap(points, move.points);
     }
 
