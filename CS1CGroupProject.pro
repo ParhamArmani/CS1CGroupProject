@@ -27,6 +27,7 @@ CONFIG += c++11
 SOURCES += \
         Line.cpp \
         canvas.cpp \
+        cont.cpp \
         contact.cpp \
         drawwidg.cpp \
         ellipse.cpp \
@@ -41,6 +42,7 @@ SOURCES += \
 HEADERS += \
         Line.h \
         canvas.h \
+        cont.h \
         contact.h \
         drawwidg.h \
         ellipse.h \
@@ -53,6 +55,7 @@ HEADERS += \
         vector.h
 
 FORMS += \
+        cont.ui \
         contact.ui \
         login.ui \
         mainwindow.ui
