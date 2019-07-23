@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1138</width>
-    <height>605</height>
+    <width>1172</width>
+    <height>566</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -511,13 +511,26 @@
      <string>canvas</string>
     </property>
    </widget>
+   <widget class="QGroupBox" name="border">
+    <property name="geometry">
+     <rect>
+      <x>109</x>
+      <y>9</y>
+      <width>1001</width>
+      <height>501</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string/>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1138</width>
+     <width>1172</width>
      <height>26</height>
     </rect>
    </property>
