@@ -23,7 +23,6 @@ Polygon::Polygon(vector<QPoint> points, const QBrush &brush, const QPen &pen)
 
 Polygon::Polygon(Polygon &&move) noexcept
 {
-    swap(move);
     swap(points, move.points);
 }
 
