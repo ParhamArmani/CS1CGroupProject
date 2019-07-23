@@ -26,6 +26,8 @@ CONFIG += c++11
 
 SOURCES += \
         canvas.cpp \
+        contact.cpp \
+        login.cpp \
         main.cpp \
         mainwindow.cpp \
         rectangle.cpp \
@@ -34,6 +36,8 @@ SOURCES += \
 
 HEADERS += \
         canvas.h \
+        contact.h \
+        login.h \
         mainwindow.h \
         rectangle.h \
         shapes.h \

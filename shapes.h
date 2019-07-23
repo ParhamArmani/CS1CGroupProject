@@ -28,7 +28,7 @@ public:
 
     virtual void draw() = 0;        //draws the shape
     virtual void move(const int newX, const int newY) = 0;        //updates the shapes
-    virtual double perimiter() = 0;   //finds the perimiter of the shape
+    virtual double perimeter() = 0;   //finds the perimiter of the shape
     virtual double area() = 0;        //finds the area of the shape
 
     void setPenColor(Qt::GlobalColor);      //changes the pen and text color
@@ -56,69 +56,5 @@ private:
     int y1;
     int id;
 };              //END SHAPE ABC
-
-
-//class rectangle : public shape
-//{
-//private:
-//    QRect rect;
-//public:
-//    rectangle();    //defualt constructor
-
-//    void draw(const int translateX, const int translateY);
-//    void move(const int newX, const int newY);
-//    double perimiter();
-//    double area();
-
-//};
-
-//class line : public shape
-//{
-//private:
-//    QLine line;
-
-//public:
-//    void draw(const int translateX, const int translateY);
-//    void move(const int newX, const int newY);
-//    double perimiter();
-//    double area();
-
-//};
-
-//class polyline : public shape
-//{
-//private:
-
-//public:
-//    void draw(const int translateX, const int translateY);
-//    void move(const int newX, const int newY);
-//    double perimiter();
-//    double area();
-//};
-
-//class polygon : public shape
-//{
-//private:
-
-//public:
-//    void draw(const int translateX, const int translateY);
-//    void move(const int newX, const int newY);
-//    double perimiter();
-//    double area();
-
-//};
-
-//class elipse : public shape
-//{
-//private:
-//    QRect rect;
-
-//public:
-//    void draw(const int translateX, const int translateY);
-//    void move(const int newX, const int newY);
-//    double perimiter();
-//    double area();
-
-//};
 
 #endif // SHAPES_H

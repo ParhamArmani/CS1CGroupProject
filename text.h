@@ -9,6 +9,7 @@ private:
     QString str;
     QFont font;
     int alignment;
+    int pointSize;
     int w;
     int h;
 
@@ -19,7 +20,7 @@ public:
 
     void draw();
     void move(const int newX, const int newY);
-    double perimiter();
+    double perimeter();
     double area();
 
     void setAlignment(Qt::AlignmentFlag);

@@ -16,7 +16,7 @@ void text::move(const int newX, const int newY)
 {
     setCoords(newX, newY);
 }
-double text::perimiter()
+double text::perimeter()
 {
     return 0;
 }
@@ -30,6 +30,7 @@ void text::setAlignment(Qt::AlignmentFlag)
 }
 void text::setSize(int size)
 {
+    pointSize = size;
     font.setPointSize(size);
     getQpainter().setFont(font);
 }
