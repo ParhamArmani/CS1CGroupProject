@@ -14,6 +14,7 @@ class drawWidg : public QWidget
 public:
     explicit drawWidg(QWidget *parent = nullptr);
     void setShape(shape* currentShape);
+    void setShapeList(vector<shape*>);
 
 signals:
 protected:
@@ -22,6 +23,7 @@ protected:
 public slots:
 public:
     shape* shapePtr;
+    QPainter* shp;
     vector<shape*> shapeList;
 };
 

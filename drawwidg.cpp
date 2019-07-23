@@ -16,28 +16,29 @@ drawWidg::drawWidg(QWidget *parent) : QWidget(parent)
 
 void drawWidg::paintEvent(QPaintEvent * /* event */)
 {
-    rectangle r;
-    r.setWidth(10);
-    r.setHeight(10);
-    r.setCoords(50,50);
-    r.setBrush(Qt::blue, Qt::BrushStyle::SolidPattern);
-    r.setPen(Qt::black, 4, Qt::PenStyle::SolidLine, Qt::PenCapStyle::FlatCap, Qt::PenJoinStyle::RoundJoin);
-    r.draw();
+    QRect t;
+    t.setWidth(10);
+    t.setWidth(10);
     QPainter painter(this);
     painter.begin(this);
     painter.drawLine(QPoint(50,60), QPoint(100,100));
     painter.setBrush(Qt::BDiagPattern);
     painter.drawRect(QRect(150,120,80,30));
+
+    for(int i = 0; i < shapeList.size(); i++)
+        shapeList[i]->draw();
+
 //    text* eqwe = new text;
 //    eqwe->setSize(20);
 //    eqwe->setCoords(200,200);
 //    eqwe->setString("hello there help");
 //    eqwe->draw();
-//    dw = new drawWidg;
-//    dw->setShape(eqwe);
-//    dw->update();
 }
 void drawWidg::setShape(shape* currentShape)
 {
     shapePtr = currentShape;
+}
+void drawWidg::setShapeList(vector<shape *> old)
+{
+    shapeList = old;
 }
