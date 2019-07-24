@@ -14,6 +14,7 @@
 #include "polygon.h"
 #include "polyline.h"
 #include "text.h"
+#include <QApplication>
 
 using std::string;
 using std::cout;

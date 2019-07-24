@@ -1,5 +1,6 @@
 #include "shapeparser.h"
 
+QFile shapesFile_TXT("shapes.txt");
 
 ShapeParser::ShapeParser()
 {
@@ -24,8 +25,8 @@ int ShapeParser::loadFile()
 	string shapeValues;
 	int id;
 	shapeTypeFILE TEMPshapeType = NOSHAPE;
-
     load.open("shapes.txt", std::ios::in);
+    //shapesFile_TXT.open(QIODevice::ReadOnly | QIODevice::Text);
     //std::cerr << "Error: " << strerror(errno);
     if(!load.is_open())
     {
