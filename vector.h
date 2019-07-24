@@ -77,7 +77,7 @@ namespace CS1C
         }
         //-------------------------------------------------
 /**
- * @brief Construct a new vector object (MOve Constructor)
+ * @brief Construct a new vector object (Move Constructor)
  * 
  * @param myObject: Object of the type T.
  * Post: Constructs the object.

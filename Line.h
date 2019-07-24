@@ -2,11 +2,14 @@
 #define LINE_H
 
 #include "shapes.h"
+
+namespace Shapes {
+
 class Line : public shape
 {
 public:
     //Line();
-//    Line(QPaintDevice* device = nullptr, int id = -1, shapeType s = shapeType::line);
+    Line(QPaintDevice* device = nullptr, int id = -1);
     Line(QPaintDevice* device = nullptr, int id = -1, shapeType s = shapeType::line, int x =0, int y=0);
     ~Line();
 
@@ -15,7 +18,7 @@ public:
 
     void move(const int x, const int y);
 
-    void draw();
+    void draw(QPainter &p);
 
     double area()const;
     double perimeter()const;
@@ -27,5 +30,5 @@ private:
     int endY;
 
 };
-
+}
 #endif //LINE_H

@@ -9,6 +9,8 @@
 #include <QPen>
 #include <QPaintEvent>
 
+namespace Shapes {
+
 class shape     //BEGIN SHAPE ABC
 {
 public:
@@ -27,7 +29,7 @@ public:
 
     void drawRect(int, int);
 
-    virtual void draw() = 0;        //draws the shape
+    virtual void draw(QPainter &p) = 0;        //draws the shape
     virtual void move(const int newX, const int newY) = 0;        //updates the shapes
     virtual double perimeter()const = 0;   //finds the perimiter of the shape
     virtual double area()const = 0;        //finds the area of the shape
@@ -57,5 +59,5 @@ private:
     int y1;
     int id;
 };              //END SHAPE ABC
-
+}
 #endif // SHAPES_H

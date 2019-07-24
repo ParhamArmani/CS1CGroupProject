@@ -1,5 +1,6 @@
 #include "rectangle.h"
 
+namespace Shapes {
 
 /**
  * @brief Construct a new rectangle::rectangle object
@@ -12,12 +13,10 @@
  * @param w : is a parameter of int ( Width of the Shape)
  * @param h : is the parameter of int ( Height of the Shape)
  */
-//rectangle::rectangle(QPaintDevice* device, int id, shapeType s, int x1, int y1, int w, int h)
-//    :shape(device, id, s), w{w}, h{h}
-//{
-//    setCoords(x1, y1);
-//}
-
+rectangle::rectangle(QPaintDevice* device, int id)
+    :shape{device, id, shapeType::rectangle}
+{
+}
 /**
  * @brief  Function to set the Rectangle 
  * 
@@ -53,13 +52,14 @@ void rectangle::setHeight(int height)
  * @brief Function to Draw the Rectangle Shape.
  * Requires no Parameter
  */
-void rectangle::draw()
+void rectangle::draw(QPainter &p)
 {
     getQpainter().setPen(getPen());
     getQpainter().setBrush(getBrush());
     getQpainter().save();
     getQpainter().drawRect(rect);
     getQpainter().restore();
+    p.drawRect(getX(),getY(),w,h);
 }
 
 /**
@@ -101,4 +101,5 @@ double rectangle::perimeter()const
     perim = static_cast<double>(perim);
 
     return perim;
+}
 }

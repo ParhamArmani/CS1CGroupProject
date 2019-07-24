@@ -5,6 +5,7 @@
 #include "shapes.h"
 #include "vector.h"
 
+using namespace Shapes;
 using namespace CS1C;
 
 

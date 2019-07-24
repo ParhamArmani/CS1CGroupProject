@@ -1,5 +1,8 @@
 #include "text.h"
 
+
+namespace Shapes {
+
 //text::text() : shape()
 //{}
 
@@ -29,7 +32,7 @@ text::~text()
  * @brief Fucntion to draw/show the text object.
  * Pre: Recieves nothing.
  */
-void text::draw()
+void text::draw(QPainter &p)
 {
     getQpainter().setPen(Qt::black);
     getQpainter().setFont(font);
@@ -154,4 +157,5 @@ void text::setHeight(int height)
 void text::setString(QString txt)
 {
     str = txt;
+}
 }

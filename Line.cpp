@@ -1,5 +1,7 @@
 #include "Line.h"
 
+namespace Shapes {
+
 //Line::Line() : shape()
 //{}
 
@@ -10,11 +12,11 @@
  * @param id : is the parameter of the Type int
  * @param s : is the parameter of the type ShapeType
  */
-//Line::Line(QPaintDevice* device, int id, shapeType s)
-//    :shape(device, id, s)
-//{
+Line::Line(QPaintDevice* device, int id)
+    :shape{device, id, shapeType::line}
+{
 
-//}
+}
 
 /**
  * @brief Construct a new Line:: Line object
@@ -42,7 +44,7 @@ Line::~Line(){}
  * @brief Function to draw the line. 
  * Pre: Recieves no parameters
  */
-void Line::draw()
+void Line::draw(QPainter &p)
 {
     getQpainter().drawLine(startX, startY, endX, endY);
 }
@@ -76,4 +78,5 @@ double Line::perimeter()const
 void Line::move(const int x, const int y)
 {
     setCoords(x,y);
+}
 }

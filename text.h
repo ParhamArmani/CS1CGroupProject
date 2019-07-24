@@ -3,6 +3,8 @@
 
 #include "shapes.h"
 
+namespace Shapes {
+
 class text : public shape
 {
 private:
@@ -18,7 +20,7 @@ public:
     text(QPaintDevice* device = nullptr, int id = -1, shapeType s = shapeType::text, QString str = "Hello");
     ~text();
 
-    void draw();
+    void draw(QPainter &p);
     void move(const int newX, const int newY);
     double perimeter()const ;
     double area()const;
@@ -32,5 +34,5 @@ public:
     void setHeight(int);
     void setString(QString);
 };
-
+}
 #endif // TEXT_H

@@ -1,6 +1,9 @@
 
 #include "shapes.h"
 
+
+namespace Shapes {
+
 shape::shape(QPaintDevice* device, int id, shapeType s) : paint{device}, s{s}, id{id}
 {
     pen = Qt::SolidLine;
@@ -191,4 +194,5 @@ int shape::getY()
 QPainter& shape::getQpainter()
 {
     return paint;
+}
 }

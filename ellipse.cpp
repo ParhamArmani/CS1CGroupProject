@@ -1,14 +1,26 @@
 #include "ellipse.h"
 
+
+namespace Shapes {
+
 /**
- * @brief Function to set the ellipse based on rectangle
+ * @brief Function to set the height of the ellipes
  *
- * @param rect : is a QTrect object
- * This function will set an ellipse based on the height and width of a rectangle.
+ * @param newH : is the parameter of type int (Height of the Ellipse)
  */
-void ellipse::set_ellipse(const QRect& rect)
+void ellipse::setHeight(int newH)
 {
-     this->rect=rect;
+    h = newH;
+}
+
+/**
+ * @brief Function to set the width of the ellipes
+ *
+ * @param newW : is the parameter of type int (Width of the Ellipse)
+ */
+void ellipse::setWidth(int newW)
+{
+    w = newW;
 }
 
 /**
@@ -16,7 +28,7 @@ void ellipse::set_ellipse(const QRect& rect)
  *
  *This function will be using QT painter and Shape Functions to draw the Ellipse.
  */
-void ellipse::draw()
+void ellipse::draw(QPainter &p)
 {
     getQpainter().setPen(getPen());
     getQpainter().setBrush(getBrush());
@@ -24,6 +36,7 @@ void ellipse::draw()
 
     getQpainter().drawEllipse(rect);
     getQpainter().restore();
+    p.drawEllipse(getX(),getY(),w,h);
 }
 
 /**
@@ -63,4 +76,5 @@ double ellipse::perimeter()const
     perim =2*3.14*sqrt((pow(static_cast<double>(rect.width()),2)+pow(static_cast<double>(rect.height()),2))/2);
 
     return perim;
+}
 }
