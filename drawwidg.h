@@ -12,13 +12,13 @@ class drawWidg : public QWidget
 {
     Q_OBJECT
 public:
-    explicit drawWidg(QWidget *parent = nullptr);
+    explicit drawWidg(QWidget *parent = 0);
     void drawShapes();
     void setShapeList(vector<shape*>);
 
 signals:
 protected:
-    void paintEvent(QPaintEvent *);
+    void paintEvent(QPaintEvent *) Q_DECL_OVERRIDE;
 
 public slots:
 public:

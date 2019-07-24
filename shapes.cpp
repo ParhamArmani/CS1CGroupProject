@@ -1,18 +1,22 @@
 
 #include "shapes.h"
 
-shape::shape(QPaintDevice* device, int id, shapeType s) : s{s},id{id}
+shape::shape(QPaintDevice* device, int id, shapeType s) : paint{device}, s{s}, id{id}
 {
-
+    pen = Qt::SolidLine;
+    brush = Qt::NoBrush;
 }
+
 shape::~shape()
 {
 
 }
+
 const QPen& shape::getPen() const
 {
     return paint.pen();
 }
+
 const QBrush& shape::getBrush() const
 {
     return paint.brush();

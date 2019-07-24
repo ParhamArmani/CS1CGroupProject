@@ -31,10 +31,14 @@ text::~text()
  */
 void text::draw()
 {
+    getQpainter().setPen(Qt::black);
+    getQpainter().setFont(font);
     QRect rect;
     rect.setX(getX());
     rect.setY(getY());
+    getQpainter().save();
     getQpainter().drawText(rect, alignment, str);
+    getQpainter().restore();
 }
 
 /**

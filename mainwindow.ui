@@ -81,6 +81,19 @@
       <string>Move</string>
      </property>
     </widget>
+    <widget class="QPushButton" name="pushButton_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>100</y>
+       <width>71</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Update</string>
+     </property>
+    </widget>
    </widget>
    <widget class="drawWidg" name="canvas" native="true">
     <property name="geometry">

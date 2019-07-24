@@ -7,6 +7,7 @@
 #include <QtWidgets>
 #include "cont.h"
 #include "login.h"
+#include "movemenu.h"
 #include "shapeparser.h"
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -41,4 +42,15 @@ void MainWindow::on_pushButton_clicked()
 {
     login* l = new login();
     l->show();
+}
+
+void MainWindow::on_moveBtn_clicked()
+{
+    moveMenu* m = new moveMenu();
+    m->show();
+}
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    ui->canvas->update();
 }

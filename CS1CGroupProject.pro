@@ -33,6 +33,7 @@ SOURCES += \
         login.cpp \
         main.cpp \
         mainwindow.cpp \
+        movemenu.cpp \
         polygon.cpp \
         polyline.cpp \
         rectangle.cpp \
@@ -48,6 +49,7 @@ HEADERS += \
         ellipse.h \
         login.h \
         mainwindow.h \
+        movemenu.h \
         polygon.h \
         polyline.h \
         rectangle.h \
@@ -59,7 +61,8 @@ HEADERS += \
 FORMS += \
         cont.ui \
         login.ui \
-        mainwindow.ui
+        mainwindow.ui \
+        movemenu.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
