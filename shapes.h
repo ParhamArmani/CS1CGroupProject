@@ -7,6 +7,9 @@
 #include <QPoint>
 #include <QPainter>
 #include <QPen>
+#include <QPaintEvent>
+
+namespace Shapes {
 
 class shape     //BEGIN SHAPE ABC
 {
@@ -26,10 +29,10 @@ public:
 
     void drawRect(int, int);
 
-    virtual void draw() = 0;        //draws the shape
+    virtual void draw(QPainter &p) = 0;        //draws the shape
     virtual void move(const int newX, const int newY) = 0;        //updates the shapes
-    virtual double perimeter() = 0;   //finds the perimiter of the shape
-    virtual double area() = 0;        //finds the area of the shape
+    virtual double perimeter()const = 0;   //finds the perimiter of the shape
+    virtual double area()const = 0;        //finds the area of the shape
 
     void setPenColor(Qt::GlobalColor);      //changes the pen and text color
     void setPenStyle(Qt::PenStyle);         //changes the pen style
@@ -56,5 +59,5 @@ private:
     int y1;
     int id;
 };              //END SHAPE ABC
-
+}
 #endif // SHAPES_H

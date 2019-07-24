@@ -16,6 +16,7 @@ using std::string;
 using std::cout;
 using std::endl;
 using std::getline;
+using namespace Shapes;
 
 class ShapeParser
 {

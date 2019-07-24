@@ -12,58 +12,80 @@
 
 #include <iostream>
 #include <algorithm>
-
+#include <new>
+/**
+ * @brief :CS1C namespace which will contain all the vector functionality.
+ * Use :: operator to acess the members of the namespace
+ * 
+ */
 namespace CS1C
-//All the this functionality will be within the CS1C namespace.
-// Use CS1C:: to access the vector operators
-{
-    template <class T> // The class Vector is templated: Prior to use must define the type of the element like. vector<shape> MyVectorName(SIZE)
+
+{/**
+ * @brief Templated class or nametype T.
+ * 
+ */
+    template <class T> // 
+    /**
+     * @brief Class Vector.
+     * \class vector
+     * The class Vector is templated.
+     * Prior to use must define the type of the element as follows: vector<shape> MyVectorName(SIZE)
+     * 
+     */
     class vector
+    
+
     {
     private:
-        
-        int size_v;   // Number of the elemments inside the vector
-        T *elem;      // pointer to the elements (or 0)
-        int space;    // number of elements plus number of free slots
+
+        int size_v;   /*< Number of the elemments inside the vector*/
+        T *elem;      /*< pointer to the elements (or 0)*/
+        int space;    /*< number of elements plus number of free slots*/
         
     public:
         //-------------------------------------------------
-
+        /**
+         * @brief Construct a new vector object
+         * Pre: Recieves no parameter
+         * Post: Creates the Vector Object with Zero Elements
+         */
         vector(): size_v{0}, elem{nullptr}, space{0} {
-            
-            // Default constructor for the Vector
-            // Pre: Recieves no parameter
-            // Post: Creates the Vector Object with Zero Elements
+
         }
         //-------------------------------------------------
-
+        /**
+         * @brief Construct a new vector object
+         * This is an alternate constructor.
+         * @param s: is space available in  the vector.
+         * Pre: Recieves the Size of the Element
+         * Post: Constructs the object with elements
+         */
         explicit vector(int s): size_v{0}, elem{new T[s]}, space{s}
         {
-            //Alternate Constructor for the Vector Class e.g: vector<double> myVectorName(NumberofElement)
-            //Pre: Recieves the Size of the Element
-            //Post: Constructs the object with elements
-            
             for (int i = 0; i < space; ++i)
                 elem[i] = T(); // elements are initialized
                 }
         //-------------------------------------------------
-
+        /**
+         * @brief Construct a new vector object (CopyConstructor)
+         * 
+         * @param myObject:  Object of the type T.
+         * Post: Constructs the object with the same size and type.
+         */
         vector(const vector &myObject): size_v{myObject.size_v}, elem{new T[myObject.size_v]}, space{myObject.space} // copy constructo
         {
-            //Copy Constructor.
-            //Pre: Recieves an Object of the same type
-            // Post: Constructs the object with the same size and type.
-            
             std::copy(myObject.elem, myObject.elem + size_v, elem); // copy elements - std::copy() algorithm
         }
         //-------------------------------------------------
+/**
+ * @brief Construct a new vector object (Move Constructor)
+ * 
+ * @param myObject: Object of the type T.
+ * Post: Constructs the object.
 
+ */
         vector(vector &&myObject): size_v{0}, elem{nullptr}, space{myObject.space}
         {
-            //Move Constructor for the Vector
-            //Pre: Recieve another Object
-            //Post: Constructs the object.
-            
             elem = myObject.elem;
             size_v = myObject.size_v;
             myObject.elem = nullptr;
@@ -71,11 +93,16 @@ namespace CS1C
         }
         
         //-------------------------------------------------
-
+        /**
+         * @brief Overloaded = Operator for the Vector Class in another words: Copy assginment oPerator.
+         * 
+         * @param myObject: is Another object of type Vector on the LEFT HAND SIDE
+         * Pre: Requeires the Object on the LEFT = then Same Type on RHS
+         * @return vector& : is the
+         */
         vector &operator=(const vector &myObject)
         {
-            //Overloaded & operator
-            //Pre: Requeires the Object on the LEFT = then Same Type on RHS
+
             
             T *p = new T[myObject.size_v];
             std::copy(myObject.elem, myObject.elem + myObject.size_v, p);
@@ -85,12 +112,14 @@ namespace CS1C
             return *this;   // return a self-reference
         }
         //-------------------------------------------------
-
+        /**
+         * @brief Overloading the = Operator
+         * Assigns the object to the new object.
+         * @param myObject
+         * @return vector& 
+         */
         vector &operator=(vector &&myObject)
         {
-            //Overloading the = Operator
-            //Pre: Recieves the object.
-            //Assigns the object to the new object.
             
             if(this != &myObject)
             {
@@ -104,32 +133,41 @@ namespace CS1C
         }
         
         //-------------------------------------------------
-
+        /**
+         * @brief Destroy the vector object
+         * Pre: N/A
+         * Post: The data and the pointers will be erased.
+         */
         ~vector()
         {
-            //Destructor for the vector class
-            //Pre: N/A
-            //Post: The data and the pointers will be erased.
-            
             delete [] elem; // destructor
         }
         //-------------------------------------------------
 
         T &operator[](int n)
+        /**
+         * @brief Overloading the [] operator READ AND WRITE.
+         * To use the defined vector like arrays.
+         * 
+         * @param n: Index
+         * @return T&: T& is a reference to an  Element of type T
+         */
         {
-            //Overloading the [] operator to use the defined vector like arrays.
-            //Pre: Recieves an index
-            //Post: Return the element with that index of any type.
             
             return elem[n]; // access: return reference
         }
         //-------------------------------------------------
 
         const T &operator[](int n) const
+         /**
+         * @brief Overloading the [] operator 
+         * To use the defined vector like std arrays, READ ONLY
+         * 
+         * @param n: Index
+         * @return T&: T& is a reference to an  Element of type T
+         */
         {
-            //Overloading the [] operator to use the defined vector like arrays with the difference that only used for consts.
-            //Pre: Recieves an index
-            //Post: Return the element with that index of any type.
+
             
             return elem[n];
         }
@@ -137,31 +175,39 @@ namespace CS1C
         //-------------------------------------------------
 
         int size() const
+        /**
+         * @brief Function to return the size of the vector.
+         * @return int size_v of the vector.
+         */
         {
-            //Function to return the size of the vector.
-            //Pre:
+
             return size_v;
         }
         
         //-------------------------------------------------
 
         int capacity() const
+        /**
+         * @brief Function to return the capacity of the vector.
+         * @return int space of the vector.
+         */
         {
-            //Function that returns the value of Space
-            //Pre: Recieves nothing
-            //Post: Returns the Private DM of Space of the object.
+
             
             return space;
         }
         
         //-------------------------------------------------
-
+        /**
+         * @brief This function will resize the object.
+         * 
+         * @param newsize: is the New size for the vector & reserves/allocates more elements and Initialize them based on their Types.
+         * 
+         * @return void 
+         */
         void resize(int newsize)
-        {
-            //This function will resize the object.
-            //Pre: Recieve the New size for the vector
-            //Post: Will reserve more elements and Initialize them based on their Types
-            
+
+        {            
             reserve(newsize);
             for (int i = 0; i < newsize; ++i)
             {
@@ -171,13 +217,15 @@ namespace CS1C
         }
         
         //-------------------------------------------------
-
+        /**
+         * @brief Function to push back the object into the Vector.
+         * Increase vector size by one; initialize the new element with obj
+         * 
+         * @param obj: is the Object of type T& to be inputted into the vector.
+         * Post: Adds the object to the vector as the last element.
+         */
         void push_back(const T &obj)
-        // increase vector size by one; initialize the new element with obj
         {
-            //Function to push back the object to the Vector
-            //Pre: Recieves an object
-            //Post: Adds the object to the vector as the last element.
             
             if (space == 0)         //For the First time, it will reserve 8 elements
                 reserve(8);
@@ -188,17 +236,25 @@ namespace CS1C
         }
         
         //-------------------------------------------------
-
+        /**
+         * @brief Function to reserve extra elements
+         * @param new_size: the Size to be added
+         * Post: Create the New object, with the new capacity and same elements from original
+         */
         void reserve(int new_size)
         {
-            // Function to reserve extra elements
-            // Pre: Recieves the Size to be added
-            // Post: Create the New object, with the new capacity and same elements from original
-            
+            try{
             T *p = new T[new_size];             // Create the new pointer array of the same type
             std::copy(elem, elem + size_v, p);       //Copy the same vector in the new array with new capacity.
             delete[] elem;                      //Delete the content of the previous elements
             elem = p;                           //Assigning the elements to the Originial array
+            space = new_size;
+                
+            }
+            catch (std::bad_alloc& ba)
+          {
+            std::cerr << "bad_alloc caught: " << ba.what() << '\n';
+          }
         }
         
         //-------------------------------------------------
@@ -208,71 +264,72 @@ namespace CS1C
         
         //-------------------------------------------------
 
+        /**
+         * @brief Function to return the pointer to the first element READ & WRITE 
+         * Pre: Recieves nnothing
+         * @return iterator: iterator is a pointer of type T*
+         */
         iterator begin()
         {
-            // Function to return the pointer to the first element
-            // Pre: Recieves nnothing
-            // Post: Returns the pointer of type T to the first element
-            
             if (size_v == 0)        // If the vector is empty
                 return nullptr;     // return a pointer 0, since no elements exist
             return &elem[0];        // Return the address of the first element
         }
         //-------------------------------------------------
-
+        /**
+         * @brief Function to return the pointer to the first element READ ONLY 
+         * Pre: Recieves nnothing
+         * @return iterator: iterator is a pointer of type T*
+         */
         const_iterator begin() const
         {
-            // Function to return the pointer to the first element
-            // Pre: Recieves nnothing
-            // Post: Returns the pointer of type T to the first element
             if (size_v == 0)        // If the vector is empty
                 return nullptr;     // return a pointer 0, since no elements exist
             return &elem[0];        // Return the address of the first element
         }
         
         //-------------------------------------------------
-
+        /**
+         * @brief Function to return the pointer to the last element READ & WRITE
+         * If the vector is empty.
+         * Returns a pointer 0, since no elements exist. Otherwise returns the address of the last element
+         * @return const_iterator: the pointer of type T to the last element or 0 if no elements exist in the container.
+         */
         iterator end()
         {
-            // Function to return the pointer to the last element
-            // Pre: Recieves nnothing
-            // Post: Returns the pointer of type T to the last element
-            
-            // If the vector is empty
-            // return a pointer 0, since no elements exist
-            // Return the address of the last element
+
             if (size_v == 0)
                 return nullptr;
             return &elem[size_v];
         }
         
         //-------------------------------------------------
-
+        /**
+         * @brief Function to return the pointer to the last element READ ONLY
+         * 
+         * @return const_iterator: the pointer of type T to the last element or 0 if no elements exist in the container.
+         */
         
         const_iterator end() const
         {
-            // Function to return the pointer to the last element
-            // Pre: Recieves nnothing
-            // Post: Returns the pointer of type T to the last element
-            
-            // If the vector is empty
-            // return a pointer 0, since no elements exist
-            // Return the address of the last element
-            
             if (size_v == 0)
                 return nullptr;
             return &elem[size_v];
         }
         
         //-------------------------------------------------
-
+        /**
+         * @brief Function to add the new pass in element just before p
+         * 
+         * @param p: is an  Interator of type T * .
+         * @param myObject: is the constant object of type T& .
+         * This function will insert the object just before P. If the number is not in range, Will insert in the End of the Vector. Then Returns a pointer to that element in the vector.
+         * @return iterator.
+         * returns the iterator of type T*
+         */
         iterator insert(iterator p, const T &myObject)
         {
-            // Function to add the new pass in element just before p
-            // Pre: Recieves the Interator and the const object.
-            // Post: Will insert the object just before P.
-            //      If the number is not in range, Will insert in the End of the Vector. Then Returns a pointer to that element in the vector.
-            
+
             if (size_v == space){ //If completely filled up capacity,
                                   // will need to allocate more space.
                 reserve(2 * space);}
@@ -289,15 +346,18 @@ namespace CS1C
             ++size_v;           //Increment the Size by one.
             return p;
         }
-        
         //-------------------------------------------------
-
+        /**
+         * @brief Function to Delete one element from the vector at position P
+         * 
+         * @param p 
+         * p is an iterator of T*
+         * @return iterator 
+         * returned value will be of type iterator of T *
+         */
         iterator erase(iterator p)
         {
-            // Function to Delete one element from the vector at position P
-            //Pre: Function Receives an Iterator [ A type T pointer ]
-            // Post: Function Returns an Iterator.
-            
+
             if (p == end()){ // IF both iterators are the same, Then Return itself and decrease the size_v
                 return p;}
             for (iterator i = p + 1; i != end(); ++i) {// Iterator over the Elements in the Vector till the end and shit all to the Left
@@ -317,7 +377,14 @@ namespace CS1C
         }
         
         //-------------------------------------------------
-
+        /**
+         * @brief Selection Sort algorithm for Vector Container
+         * 
+         * @param first
+         * first is the index of the element within the vector.
+         * @param last 
+         * last is the index of the last element within the vector.
+         */
         void selection_sort(T first, T last)
         {
             int n = last - first;
@@ -335,11 +402,13 @@ namespace CS1C
         
         
         //-------------------------------------------------
+        /**
+         * @brief Function to print the content of a vector to the console
+         * Pre: The object must have been instantiated
+         * The overloaded stream operator must have been defined in a class prior to using  this class.
+         * Post: The vector's elements will be printed Out to the console
+         */
         void print_vector(){
-            //Function to print the content of a vector to the console
-            //Pre: The object must have been instantiated
-            //     The overloaded stream operator must have been defined in a class prior to using       this class.
-            //Post: The vector's elements will be printed Out to the console
             for (int i=0; i<this->size(); i++) //Will iterate through the vector's elements, as many times as the vector holds elements.
                 std::cout << elem[i] << "\t"; //Outputs the elements with a "\t" gap.
                 std::cout << std::endl;       // Move the output buffer to the next line once the iteration has finished.

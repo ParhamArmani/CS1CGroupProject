@@ -1,5 +1,6 @@
 #include "shapeparser.h"
 
+
 ShapeParser::ShapeParser()
 {
 
@@ -28,7 +29,7 @@ void ShapeParser::loadFile()
 
 	while (!load.eof())
 	{
-		char temp = load.peek();
+       char temp = load.peek();
 		if (temp == '\n')
 		{
 			//skips whitespace (\n) in the first line
