@@ -16,6 +16,11 @@ shape::~shape()
 
 }
 
+int shape::getId() const
+{
+    return id;
+}
+
 const QPen& shape::getPen() const
 {
     return paint.pen();
@@ -78,6 +83,13 @@ shape::shapeType shape::getShape() const
 {
     return s;
 }
+
+
+void shape::setId(int i)
+{
+    id = i;
+}
+
 
 /**
  * @brief Function to set the color of the pen of the QT device.

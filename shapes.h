@@ -19,6 +19,7 @@ public:
     shape(QPaintDevice* device = nullptr, int id = -1, shapeType s = shapeType::noShape);
     virtual ~shape();
 
+    int getId() const;    //returns the id of the shape
     shapeType getShape() const; //returns what type of shape it is
     const QPen& getPen() const; //returns a reference to the QPen
     const QBrush& getBrush() const; //returns a reference to the QBrush
@@ -29,28 +30,30 @@ public:
 
     void drawRect(int, int);
 
-    virtual void draw(QPainter &p) = 0;        //draws the shape
+    virtual void draw(QPainter &p, QPaintDevice* device) = 0;        //draws the shape
     virtual void move(const int newX, const int newY) = 0;        //updates the shapes
     virtual double perimeter()const = 0;   //finds the perimiter of the shape
     virtual double area()const = 0;        //finds the area of the shape
 
+    void setId(int);                        //sets the id
     void setPenColor(Qt::GlobalColor);      //changes the pen and text color
     void setPenStyle(Qt::PenStyle);         //changes the pen style
-    void setPenWidth(int);
-    void setPenCap(Qt::PenCapStyle);
-    void setPenJoint(Qt::PenJoinStyle);
-    void setBrushColor(Qt::GlobalColor);
-    void setBrushStyle(Qt::BrushStyle);
+    void setPenWidth(int);                  //changes the pen width
+    void setPenCap(Qt::PenCapStyle);        //chnges the pen cap
+    void setPenJoint(Qt::PenJoinStyle);     //chnges the pen joint
+    void setBrushColor(Qt::GlobalColor);    //changes the brush color
+    void setBrushStyle(Qt::BrushStyle);     //changes the brush style
 
     void setCoords(int, int);       //changes the shapes position
-    int getX();
-    int getY();
+    int getX();                     //gets the x value
+    int getY();                     //gets the y value
+    QPainter paint;
 
 protected:
     QPainter& getQpainter();
 
 private:
-    QPainter paint;
+
     QPaintDevice* device;
     QPen pen;
     QBrush brush;
