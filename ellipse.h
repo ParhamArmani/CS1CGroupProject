@@ -10,7 +10,12 @@ class ellipse : public shape
 public:
     ellipse(QPaintDevice* device = nullptr,int id=-1): shape(device,id,shapeType::ellipse){}    //defualt constructor
     ~ellipse() {}
-
+    
+    void set_rect(const QRect& rect)
+    {
+        this->rect=rect;
+    }
+    
     void setHeight(int);
     void setWidth(int);
 
