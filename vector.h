@@ -12,6 +12,7 @@
 
 #include <iostream>
 #include <algorithm>
+#include <new>
 /**
  * @brief :CS1C namespace which will contain all the vector functionality.
  * Use :: operator to acess the members of the namespace
@@ -242,12 +243,18 @@ namespace CS1C
          */
         void reserve(int new_size)
         {
+            try{
             T *p = new T[new_size];             // Create the new pointer array of the same type
             std::copy(elem, elem + size_v, p);       //Copy the same vector in the new array with new capacity.
             delete[] elem;                      //Delete the content of the previous elements
             elem = p;                           //Assigning the elements to the Originial array
             space = new_size;
-
+                
+            }
+            catch (std::bad_alloc& ba)
+          {
+            std::cerr << "bad_alloc caught: " << ba.what() << '\n';
+          }
         }
         
         //-------------------------------------------------
