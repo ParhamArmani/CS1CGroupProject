@@ -55,8 +55,9 @@ void Line::setStart(int X, int Y)
  * @brief Function to draw the line. 
  * Pre: Recieves no parameters
  */
-void Line::draw(QPainter &p)
+void Line::draw(QPainter &p, QPaintDevice* device)
 {
+    p.begin(device);
     QPen temp;
     temp.setColor(Qt::blue);
     temp.setWidth(2);

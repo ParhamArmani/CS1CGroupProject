@@ -20,7 +20,7 @@ public:
     text(QPaintDevice* device = nullptr, int id = -1, shapeType s = shapeType::text, QString str = "Hello");
     ~text();
 
-    void draw(QPainter &p);
+    void draw(QPainter &p, QPaintDevice* device);
     void move(const int newX, const int newY);
     double perimeter()const ;
     double area()const;

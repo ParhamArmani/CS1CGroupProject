@@ -28,7 +28,7 @@ void ellipse::setWidth(int newW)
  *
  *This function will be using QT painter and Shape Functions to draw the Ellipse.
  */
-void ellipse::draw(QPainter &p)
+void ellipse::draw(QPainter &p, QPaintDevice* device)
 {
     getQpainter().setPen(getPen());
     getQpainter().setBrush(getBrush());

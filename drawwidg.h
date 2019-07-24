@@ -16,6 +16,7 @@ public:
     explicit drawWidg(QWidget *parent = 0);
     void drawShapes();
     void setShapeList(vector<shape*>);
+    vector<shape*>& getShapeList();
 
 signals:
 protected:

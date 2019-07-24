@@ -32,13 +32,21 @@ text::~text()
  * @brief Fucntion to draw/show the text object.
  * Pre: Recieves nothing.
  */
-void text::draw(QPainter &p)
+void text::draw(QPainter &p, QPaintDevice* device)
 {
-    getQpainter().setPen(Qt::black);
+    p.begin(device);
+    getQpainter().setPen(Qt::blue);
     getQpainter().setFont(font);
+    setStyle(QFont::Style::StyleItalic);
+    setWeight(QFont::Weight::Normal);
+    setAlignment(Qt::AlignmentFlag::AlignCenter);
+    setFont(QString("Comic Sans MS"));
+//    setSize(12);
     QRect rect;
     rect.setX(getX());
     rect.setY(getY());
+    rect.setWidth(w);
+    rect.setHeight(h);
     getQpainter().save();
     getQpainter().drawText(rect, alignment, str);
     getQpainter().restore();

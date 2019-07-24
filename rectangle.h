@@ -2,6 +2,8 @@
 #define RECTANGLE_H
 
 #include "shapes.h"
+#include <QBrush>
+#include <QPen>
 
 namespace Shapes {
 
@@ -15,7 +17,7 @@ public:
     void setWidth(int);
     void setHeight(int);
 
-    void draw(QPainter &p);
+    void draw(QPainter &p, QPaintDevice* device);
     void move(int x2,int y2);
     double perimeter()const;
     double area()const;

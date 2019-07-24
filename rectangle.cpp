@@ -53,13 +53,18 @@ void rectangle::setHeight(int height)
  * @brief Function to Draw the Rectangle Shape.
  * Requires no Parameter
  */
-void rectangle::draw(QPainter &p)
+void rectangle::draw(QPainter &p, QPaintDevice* device)
 {
-    QPen temp;
-    p.setPen(getPen());
-    cout << "hello : " << getPen().width() << '\n';
-    p.setBrush(getBrush());
-    p.drawRect(getX(),getY(),w,h);
+//    p.begin(device);
+    getQpainter().begin(device);
+//    getQpainter().setPen(getPen());
+//    getQpainter().setBrush(getBrush());
+    getQpainter().drawRect(getX(),getY(),w,h);
+//    p.setPen(getPen());
+//    p.setBrush(getBrush());
+    p.setBrush(brush);
+    p.setPen(pen);
+//    p.drawRect(getX(),getY(),w,h);
 }
 
 /**
@@ -102,4 +107,5 @@ double rectangle::perimeter()const
 
     return perim;
 }
+
 }

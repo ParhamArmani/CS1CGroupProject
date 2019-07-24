@@ -57,7 +57,7 @@ void shape::setPen(Qt::GlobalColor, int width, Qt::PenStyle, Qt::PenCapStyle, Qt
     newPen.setCapStyle(Qt::PenCapStyle());
     newPen.setJoinStyle(Qt::PenJoinStyle());
     paint.setPen(newPen);
-    pen = newPen;
+//    pen = newPen;
 }
 
 /**
@@ -71,7 +71,7 @@ void shape::setBrush(Qt::GlobalColor, Qt::BrushStyle)
     newBrush.setColor(Qt::GlobalColor());
     newBrush.setStyle(Qt::BrushStyle());
     paint.setBrush(newBrush);
-    brush = newBrush;
+//    brush = newBrush;
 }
 
 /**
@@ -99,29 +99,26 @@ void shape::setId(int i)
 void shape::setPenColor(Qt::GlobalColor)
 {
     pen.setColor(Qt::GlobalColor());
-    paint.setPen(pen);
 }
 
 /**
  * @brief Function to set the pen style of the qt painter object.
  * @param Qt::PenStyle : the style of the pen of the qt painter object.
- * 
+ *
  */
 void shape::setPenStyle(Qt::PenStyle)
 {
     pen.setStyle(Qt::PenStyle());
-    paint.setPen(pen);
 }
 
 /**
  * @brief Function to set the width of the QT pen.
- * 
+ *
  * @param w : the an integer which the width of the pen will be set to.
  */
 void shape::setPenWidth(int w)
 {
     pen.setWidth(w);
-    paint.setPen(pen);
 }
 
 /**
@@ -132,18 +129,16 @@ void shape::setPenWidth(int w)
 void shape::setPenCap(Qt::PenCapStyle)
 {
     pen.setCapStyle(Qt::PenCapStyle());
-    paint.setPen(pen);
 }
 
 /**
  * @brief set the Pen joiint property of the QT Object
- * @param Qt::PenJoinStyle: 
+ * @param Qt::PenJoinStyle:
  */
 
 void shape::setPenJoint(Qt::PenJoinStyle)
 {
     pen.setJoinStyle(Qt::PenJoinStyle());
-    paint.setPen(pen);
 }
 
 /**
@@ -153,8 +148,6 @@ void shape::setPenJoint(Qt::PenJoinStyle)
 void shape::setBrushColor(Qt::GlobalColor)
 {
     brush.setColor(Qt::GlobalColor());
-    pen.setBrush(brush);
-    paint.setBrush(brush);
 }
 
 /**
@@ -164,8 +157,6 @@ void shape::setBrushColor(Qt::GlobalColor)
 void shape::setBrushStyle(Qt::BrushStyle)
 {
     brush.setStyle(Qt::BrushStyle());
-    pen.setBrush(brush);
-    paint.setBrush(brush);
 }
 /**
  * @brief Function to set the coordinate the QT object.

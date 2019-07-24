@@ -19,7 +19,7 @@ public:
     void setHeight(int);
     void setWidth(int);
 
-    void draw(QPainter &p);
+    void draw(QPainter &p, QPaintDevice* device);
     void move(int x2,int y2);
     double perimeter()const;
     double area()const;

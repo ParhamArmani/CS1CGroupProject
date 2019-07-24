@@ -7,13 +7,14 @@ void polyline::set_point(const QPoint& point)
    points.push_back(point);
 }
 
-void polyline::draw(QPainter &p)
+void polyline::draw(QPainter &p, QPaintDevice* device)
 {
     getQpainter().setPen(getPen());
     getQpainter().setBrush(getBrush());
     getQpainter().save();
     getQpainter().drawPolyline(points.begin(),points.size());
     getQpainter().restore();
+    p.drawPolyline(points.begin(), points.size());
 }
 
 void polyline::move(const int newX, const int newY)

@@ -17,7 +17,7 @@ public:
     void setStart(int startX, int startY);
 
     void move(const int x, const int y);
-    void draw(QPainter &p);
+    void draw(QPainter &p, QPaintDevice* device);
     double area()const;
     double perimeter()const;
 

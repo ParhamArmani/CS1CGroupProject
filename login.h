@@ -15,6 +15,8 @@ public:
     explicit login(QWidget *parent = nullptr);
     ~login();
 
+    bool getBool() {return correctPswrd;}
+
 private slots:
     void on_pushButton_clicked();
 
@@ -23,6 +25,7 @@ private slots:
 private:
     Ui::login *ui;
     cont *contact;
+    bool correctPswrd;
 };
 
 #endif // LOGIN_H

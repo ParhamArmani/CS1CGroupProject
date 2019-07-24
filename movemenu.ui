@@ -52,7 +52,7 @@
     <string>y:</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit">
+  <widget class="QLineEdit" name="idInput">
    <property name="geometry">
     <rect>
      <x>120</x>
@@ -62,7 +62,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QSpinBox" name="spinBox">
+  <widget class="QSpinBox" name="xVal">
    <property name="geometry">
     <rect>
      <x>121</x>
@@ -72,7 +72,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QSpinBox" name="spinBox_2">
+  <widget class="QSpinBox" name="yVal">
    <property name="geometry">
     <rect>
      <x>210</x>

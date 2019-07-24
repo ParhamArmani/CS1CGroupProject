@@ -48,6 +48,8 @@ public:
     int getX();                     //gets the x value
     int getY();                     //gets the y value
     QPainter paint;
+    QPen pen;
+    QBrush brush;
 
 protected:
     QPainter& getQpainter();
@@ -55,8 +57,8 @@ protected:
 private:
 
     QPaintDevice* device;
-    QPen pen;
-    QBrush brush;
+//    QPen pen;
+//    QBrush brush;
     shapeType s;
     int x1;
     int y1;

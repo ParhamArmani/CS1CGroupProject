@@ -7,13 +7,15 @@ void polygon::set_point(const QPoint& point)
    points.push_back(point);
 }
 
-void polygon::draw(QPainter &p)
+void polygon::draw(QPainter &p, QPaintDevice* device)
 {
     getQpainter().setPen(getPen());
     getQpainter().setBrush(getBrush());
     getQpainter().save();
     getQpainter().drawPolygon(points.begin(),points.size());
-    getQpainter().restore();
+//    getQpainter().restore();
+    p.drawPolygon(points.begin(), points.size());
+
 }
 
 void polygon::move(const int newX, const int newY)

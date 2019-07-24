@@ -36,7 +36,7 @@ private:
     drawWidg* dw;
     shape* s;
     vector<shape*> shapeList;
-    ShapeParser parser;
+//    ShapeParser parser;
     bool access;
 };
 

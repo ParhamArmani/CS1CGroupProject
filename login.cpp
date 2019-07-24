@@ -8,6 +8,7 @@ login::login(QWidget *parent) :
     ui(new Ui::login)
 {
     ui->setupUi(this);
+    correctPswrd = false;
 }
 
 login::~login()
@@ -23,6 +24,8 @@ void login::on_pushButton_clicked()
     if (username=="admin" && password == "admin123")
     {
         QMessageBox::information(this,"Login","Administrator confirmed");
+        correctPswrd = true;
+        close();
     }
 }
 
