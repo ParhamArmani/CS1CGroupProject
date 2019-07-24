@@ -1,101 +1,124 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>login</class>
- <widget class="QDialog" name="login">
+ <class>moveMenu</class>
+ <widget class="QDialog" name="moveMenu">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>339</width>
-    <height>203</height>
+    <width>375</width>
+    <height>204</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Login</string>
+   <string>Move Menu</string>
   </property>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>60</x>
      <y>60</y>
-     <width>71</width>
-     <height>16</height>
+     <width>55</width>
+     <height>21</height>
     </rect>
    </property>
    <property name="text">
-    <string>Username:</string>
+    <string>Shape ID:</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>90</y>
-     <width>161</width>
-     <height>16</height>
+     <x>100</x>
+     <y>120</y>
+     <width>31</width>
+     <height>21</height>
     </rect>
    </property>
    <property name="text">
-    <string>Password:</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit">
-   <property name="geometry">
-    <rect>
-     <x>100</x>
-     <y>60</y>
-     <width>221</width>
-     <height>22</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_2">
-   <property name="geometry">
-    <rect>
-     <x>100</x>
-     <y>90</y>
-     <width>221</width>
-     <height>22</height>
-    </rect>
+    <string>x: </string>
    </property>
   </widget>
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>0</y>
-     <width>81</width>
+     <x>190</x>
+     <y>120</y>
+     <width>55</width>
      <height>21</height>
     </rect>
    </property>
    <property name="text">
-    <string>Sign in:</string>
+    <string>y:</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>60</y>
+     <width>141</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QSpinBox" name="spinBox">
+   <property name="geometry">
+    <rect>
+     <x>121</x>
+     <y>120</y>
+     <width>51</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QSpinBox" name="spinBox_2">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>120</y>
+     <width>51</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>10</y>
+     <width>111</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Move Menu</string>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>200</x>
-     <y>150</y>
+     <x>80</x>
+     <y>160</y>
      <width>93</width>
      <height>28</height>
     </rect>
    </property>
    <property name="text">
-    <string>Login</string>
+    <string>Confirm</string>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton_2">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>150</y>
+     <x>210</x>
+     <y>160</y>
      <width>93</width>
      <height>28</height>
     </rect>
    </property>
    <property name="text">
-    <string>Contact </string>
+    <string>Cancel</string>
    </property>
   </widget>
  </widget>

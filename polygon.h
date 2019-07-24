@@ -1,25 +1,26 @@
-#ifndef POLYGON_H
-#define POLYGON_H
+//#ifndef POLYGON_H
+//#define POLYGON_H
 
-#include "Polyline.h"
+//#include "shapes.h"
+//#include "polyline.h"
 
-using namespace std;
+//using namespace std;
 
-class Polygon : public Polyline
-{
-public:
+//class Polygon : public Polyline
+//{
+//public:
 
-    Polygon(vector<QPoint> points={}, const QBrush &brush={}, const QPen &pen={});
-    Polygon(Polygon &&move) noexcept;
-    Polygon();
+//    Polygon(vector<QPoint> points={}, const QBrush &brush={}, const QPen &pen={});
+//    Polygon(Polygon &&move) noexcept;
+//    Polygon();
 
-    void draw(QPaintDevice* device);
+//    void draw();
 
-    double perimeter();
-    double area();
+//    double perimeter()const;
+//    double area()const;
 
 
 
-};
+//};
 
-#endif // POLYGON_H
+//#endif // POLYGON_H

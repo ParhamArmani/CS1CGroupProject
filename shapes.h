@@ -7,6 +7,7 @@
 #include <QPoint>
 #include <QPainter>
 #include <QPen>
+#include <QPaintEvent>
 
 class shape     //BEGIN SHAPE ABC
 {

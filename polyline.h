@@ -1,34 +1,34 @@
-#ifndef POLYLINE_H
-#define POLYLINE_H
+//#ifndef POLYLINE_H
+//#define POLYLINE_H
 
-#include "shapes.h"
+//#include "shapes.h"
 
-using namespace std;
-
-
-class Polyline : public Shape
-{
-public:
-    Polyline(vector<QPoint> points = {}, const QBrush &brush = {}, const QPen &pen ={});
-    ~Polyline();
-
-    Polyline(Polyline &&move)noexcept;
+//using namespace std;
 
 
-    void draw(QPaintDevice* device)const override;
+//class Polyline : public shape
+//{
+//public:
+//    Polyline(vector<QPoint> points = {}, const QBrush &brush = {}, const QPen &pen ={});
+//    ~Polyline();
 
-    double area()const override;
-    double perimeter()const override;
-
-    void setPoint(const QPoint &point);
-    void insertPoint(const QPoint &point);
-    void clearPoint();
+//    Polyline(Polyline &&move)noexcept;
 
 
-private:
-    vector<QPoint> points;
-    int pts;
+//    void draw();
+//    void move(int x1, int y1);
+//    double area()const;
+//    double perimeter()const;
 
-};
+//    void setPoint(const QPoint &point);
+//    void insertPoint(const QPoint &point);
+//    void clearPoint();
 
-#endif // POLYLINE_H
+
+//private:
+//    vector<QPoint> points;
+//    int pts;
+
+//};
+
+//#endif // POLYLINE_H

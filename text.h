@@ -20,8 +20,8 @@ public:
 
     void draw();
     void move(const int newX, const int newY);
-    double perimeter();
-    double area();
+    double perimeter()const ;
+    double area()const;
 
     void setAlignment(Qt::AlignmentFlag);
     void setSize(int);

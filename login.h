@@ -1,6 +1,6 @@
 #ifndef LOGIN_H
 #define LOGIN_H
-#include "contact.h"
+#include "cont.h"
 #include <QDialog>
 
 namespace Ui {
@@ -22,7 +22,7 @@ private slots:
 
 private:
     Ui::login *ui;
-    contact *contact;
+    cont *contact;
 };
 
 #endif // LOGIN_H

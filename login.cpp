@@ -1,6 +1,7 @@
 #include "login.h"
 #include "ui_login.h"
 #include "QMessageBox"
+#include "cont.h"
 
 login::login(QWidget *parent) :
     QDialog(parent),
@@ -28,6 +29,6 @@ void login::on_pushButton_clicked()
 
 void login::on_pushButton_2_clicked()
 {
-    contact = new contact(this);
+    contact = new cont(this);
     contact->show();
 }

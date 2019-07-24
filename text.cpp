@@ -31,10 +31,14 @@ text::~text()
  */
 void text::draw()
 {
+    getQpainter().setPen(Qt::black);
+    getQpainter().setFont(font);
     QRect rect;
     rect.setX(getX());
     rect.setY(getY());
+    getQpainter().save();
     getQpainter().drawText(rect, alignment, str);
+    getQpainter().restore();
 }
 
 /**
@@ -53,7 +57,7 @@ void text::move(const int newX, const int newY)
  * 
  * @return Zero (Of type Double): The Perimenter of a text is Zero
  */
-double text::perimeter()
+double text::perimeter()const
 {
     return 0;
 }
@@ -63,7 +67,7 @@ double text::perimeter()
  * 
  * @return Zero (Of type Double): The Area of a text is Zero
  */
-double text::area()
+double text::area()const
 {
     return 0;
 }

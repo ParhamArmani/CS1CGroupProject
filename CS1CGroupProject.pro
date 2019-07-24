@@ -27,11 +27,15 @@ CONFIG += c++11
 SOURCES += \
         Line.cpp \
         canvas.cpp \
-        contact.cpp \
+        cont.cpp \
         drawwidg.cpp \
+        ellipse.cpp \
         login.cpp \
         main.cpp \
         mainwindow.cpp \
+        movemenu.cpp \
+        polygon.cpp \
+        polyline.cpp \
         rectangle.cpp \
         shapeparser.cpp \
         shapes.cpp \
@@ -40,10 +44,14 @@ SOURCES += \
 HEADERS += \
         Line.h \
         canvas.h \
-        contact.h \
+        cont.h \
         drawwidg.h \
+        ellipse.h \
         login.h \
         mainwindow.h \
+        movemenu.h \
+        polygon.h \
+        polyline.h \
         rectangle.h \
         shapeparser.h \
         shapes.h \
@@ -51,9 +59,10 @@ HEADERS += \
         vector.h
 
 FORMS += \
-        contact.ui \
+        cont.ui \
         login.ui \
-        mainwindow.ui
+        mainwindow.ui \
+        movemenu.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -61,5 +70,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
+    logo.png \
     shape_input_file_specs.txt \
     shapes.txt
