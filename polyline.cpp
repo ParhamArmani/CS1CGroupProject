@@ -1,74 +1,49 @@
-//#include "polyline.h"
+#include "polyline.h"
 
-//using namespace std;
+namespace Shapes{
 
-//    /**
-//     * @brief Construct a new Polyline:: Polyline object
-//     *
-//     * @param points : is a parameter of type QPoint
-//     * @param brush : is a parameter of type Qbrush
-//     * @param pen  : is parameter of the type QPen
-//     */
-//    Polyline::Polyline(vector<QPoint> points, const QBrush &brush, const QPen &pen)
-//                    :Shape{QPoint{}, brush, pen}, points{}}
-//    {
-//        setCenter();
-//    }
+void polyline::set_point(const QPoint& point)
+{
+   points.push_back(point);
+}
 
+void polyline::draw(QPainter &p)
+{
+    getQpainter().setPen(getPen());
+    getQpainter().setBrush(getBrush());
+    getQpainter().save();
+    getQpainter().drawPolyline(points.begin(),points.size());
+    getQpainter().restore();
+}
 
-//    /**
-//     * @brief Construct a new Polyline:: Polyline object (Move constructor)
-//     *
-//     * @param move : is a parameter of type Object Polyline
-//     */
-//    Polyline::Polyline(Polyline &&move)noexcept
-//    {
-//        swap(move);
-//        swap(points, move.points);
-//    }
+void polyline::move(const int newX, const int newY)
+{
+    for(int i =0;i < points.size();i++)
+    {
+       points[i].setX(newX+ points[i].x());
+       points[i].setY(newY+ points[i].y());
+    }
+}
 
-//    /**
-//     * @brief Function to draw the Polyline
-//     *
-//     * @param device : is a parameter of the QpaintDevice Type
-//     */
-//    void Polyline::draw()
-//    {
-//        auto paint = getPainter(device);
-//        paint->drawPolyline(points.data(), points.size());
-//    }
+double polyline::area()const
+{
+    double area=0;
 
-//    /**
-//     * @brief Function to return the Area of the polyline (Default -1)
-//     *
-//     * @return -1 :cPolyline has no area since it's not enclosed.
-//     */
-//    double Polyline::area() const
-//    {
-//        return -1;
-//    }
+    return area;
+}
 
-//    /**
-//     * @brief Function to return the perimeter of the poliline object
-//     *
-//     * @return -1 : Polyline has no perimeter since it's not enclosed.
-//     */
-//    double Polyline::perimeter() const
-//    {
-//        return -1;
-//    }
+double polyline::perimeter()const
+{
+   double perim=0;
+   double hold=0;
 
-//    void Polyline::setPoint(const QPoint &point)
-//    {
-//        points[i] = point - getPos();
-//    }
+   for(int i = 0;i < points.size()-1;i++)
+   {
+       //distance formula
+       hold = sqrt(pow(points[i+1].x()- points[i].x(),2)+ pow(points[i+1].y()- points[i].y(),2));
+       perim+=hold;
+   }
 
-//    void Polyline::insertPoint(const QPoint &point)
-//    {
-//        points.insert(points.begin() + before, point - getPos());
-//    }
-
-//    void Polyline::clearPoint()
-//    {
-//        points.clear();
-//    }
+   return perim;
+}
+}

@@ -10,28 +10,26 @@ namespace Shapes {
  * 
  * @param device: is a parameter of the type QPainterDevice
  * @param id : is the parameter of the Type int
- * @param s : is the parameter of the type ShapeType
  */
 Line::Line(QPaintDevice* device, int id)
     :shape{device, id, shapeType::line}
 {
-
 }
 
 /**
  * @brief Construct a new Line:: Line object
- * 
+ *
  * @param device :is a parameter of the type QPainterDevice
  * @param id :is the parameter of the Type int
  * @param s :is the parameter of the Type ShapeType
  * @param x :is the parameter of the Type int
  * @param y :is the parameter of the Type int
  */
-Line::Line(QPaintDevice* device, int id, shapeType s, int x, int y)
-    :shape(device, id, s)
-{
-    setCoords(x, y);
-}
+//Line::Line(QPaintDevice* device, int id, shapeType s, int x, int y)
+//    :shape(device, id, s)
+//{
+//    setCoords(x, y);
+//}
 
 /**
  * @brief Destroy the Line:: Line object
@@ -40,13 +38,33 @@ Line::Line(QPaintDevice* device, int id, shapeType s, int x, int y)
  */
 Line::~Line(){}
 
+
+void Line::setEnd(int X, int Y)
+{
+    endX = X;
+    endY = Y;
+}
+
+void Line::setStart(int X, int Y)
+{
+    startX = X;
+    startY = Y;
+}
+
 /**
  * @brief Function to draw the line. 
  * Pre: Recieves no parameters
  */
 void Line::draw(QPainter &p)
 {
-    getQpainter().drawLine(startX, startY, endX, endY);
+    QPen temp;
+    temp.setColor(Qt::blue);
+    temp.setWidth(2);
+    temp.setStyle(Qt::PenStyle::DashDotLine);
+    temp.setCapStyle(Qt::PenCapStyle::FlatCap);
+    temp.setJoinStyle(Qt::PenJoinStyle::MiterJoin);
+    p.setPen(temp);
+    p.drawLine(startX,startY,endX,endY);
 }
 
 /**

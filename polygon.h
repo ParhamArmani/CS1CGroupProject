@@ -1,26 +1,31 @@
-//#ifndef POLYGON_H
-//#define POLYGON_H
+#ifndef POLYGON_H
+#define POLYGON_H
+#include <QPoint>
+#include <string>
+#include <cmath>
+#include <QBrush>
+#include <QPoint>
+#include <QPen>
+#include <QPainter>
+#include "vector.h"
+#include "shapes.h"
 
-//#include "shapes.h"
-//#include "polyline.h"
+namespace Shapes {
 
-//using namespace std;
+class polygon : public shape
+{
+    polygon(QPaintDevice* device = nullptr,int id=-1) : shape(device,id,shapeType::polygon){}
 
-//class Polygon : public Polyline
-//{
-//public:
+    void set_point(const QPoint& point);
 
-//    Polygon(vector<QPoint> points={}, const QBrush &brush={}, const QPen &pen={});
-//    Polygon(Polygon &&move) noexcept;
-//    Polygon();
+    void draw(QPainter &p);
+    void move(const int newX, const int newY);
+    double area() const;
+    double perimeter() const;
 
-//    void draw();
+private:
+    CS1C::vector<QPoint> points;
+};
+}
 
-//    double perimeter()const;
-//    double area()const;
-
-
-
-//};
-
-//#endif // POLYGON_H
+#endif // POLYGON_H

@@ -1,34 +1,33 @@
-//#ifndef POLYLINE_H
-//#define POLYLINE_H
+#ifndef POLYLINE_H
+#define POLYLINE_H
 
-//#include "shapes.h"
-
-//using namespace std;
-
-
-//class Polyline : public shape
-//{
-//public:
-//    Polyline(vector<QPoint> points = {}, const QBrush &brush = {}, const QPen &pen ={});
-//    ~Polyline();
-
-//    Polyline(Polyline &&move)noexcept;
+#include <QPoint>
+#include <string>
+#include <cmath>
+#include <QBrush>
+#include <QPoint>
+#include <QPen>
+#include <QPainter>
+#include "vector.h"
+#include "shapes.h"
 
 
-//    void draw();
-//    void move(int x1, int y1);
-//    double area()const;
-//    double perimeter()const;
+namespace Shapes {
 
-//    void setPoint(const QPoint &point);
-//    void insertPoint(const QPoint &point);
-//    void clearPoint();
+class polyline : public shape
+{
+    polyline(QPaintDevice* device = nullptr,int id=-1) : shape(device,id,shapeType::polyline){}
 
+    void set_point(const QPoint& point);
+    void draw(QPainter &p);
+    void move(const int newX, const int newY);
 
-//private:
-//    vector<QPoint> points;
-//    int pts;
+    double area()const;
+    double perimeter()const;
 
-//};
+private:
+    CS1C::vector<QPoint> points;
+};
+}
 
-//#endif // POLYLINE_H
+#endif // POLYLINE_H

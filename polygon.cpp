@@ -1,78 +1,84 @@
-//#include "polygon.h"
+#include "polygon.h"
 
-//using namespace std;
+namespace Shapes {
 
-///**
-// * @brief Construct a new Polygon:: Polygon object (Default Constructor)
-// *
-// * @param points : is a parameter of QPoint
-// * @param brush : is a parameter of Qbrush
-// * @param pen : is a parameter of Qpen
-// */
-//Polygon::Polygon(vector<QPoint> points, const QBrush &brush, const QPen &pen)
-//        : PolyLine{move(points), brush, pen}
-//{
+void polygon::set_point(const QPoint& point)
+{
+   points.push_back(point);
+}
 
-//}
+void polygon::draw(QPainter &p)
+{
+    getQpainter().setPen(getPen());
+    getQpainter().setBrush(getBrush());
+    getQpainter().save();
+    getQpainter().drawPolygon(points.begin(),points.size());
+    getQpainter().restore();
+}
 
-///**
-// * @brief Construct a new Polygon:: Polygon object (Move Constructor)
-// *
-// * @param move : is a parameter of type Polygon
-// */
+void polygon::move(const int newX, const int newY)
+{
+    for(int i =0;i < points.size();i++)
+    {
+       points[i].setX(newX+ points[i].x());
+       points[i].setY(newY+ points[i].y());
+    }
+}
 
-//Polygon::Polygon(Polygon &&move) noexcept
-//{
-//    swap(move);
-//    swap(points, move.points);
-//}
+double polygon::area()const
+{
+    //area of rectangle formed by largest and smallest x & y values
+    int smallx = points[0].x();
+    int bigx = points[0].x();
+    int smally =points[0].y();
+    int bigy = points[0].y();;
+    double area=0;
 
-///**
-// * @brief Function to draw the Polygon Object
-// *
-// * @param device: is a parameter of type QpaintDevice
-// */
-//void Polygon::draw(QPaintDevice* device) const
-//{
-//    auto paint = getPainter(device);
-//    paint->drawPolygon(points.data(), points.size());
-//}
 
-///**
-// * @brief Function to retyrn the Area of a Polygon
-// * Pre: Recieves no parameters
-// * @return Area(Double) : Area of a polygon
-// */
+    for(int i =0;i < points.size();i++)
+    {
+         //min x
+        if(points[i].x ()< smallx)
+        {
+            smallx=points[i].x();
+        }
 
-//double Polygon::area()const
-//{
-//    double area = 0;
+        //max x
+        if(points[i].x ()>bigx)
+        {
+            bigx=points[i].x();
+        }
 
-//    for(int i=points.start; i<points.end(); i++)
-//    {
-//        const QPoint &first = *i;
-//        const QPoint &second = points.end();
+        //min y
+        if(points[i].y ()< smally)
+        {
+            smally=points[i].y();
+        }
 
-//        area += ((start.x()*start.y())-(start.y()*start.x()));
-//    }
-//    return area;
-//}
+        //max y
+        if(points[i].y ()>bigy)
+        {
+            bigy=points[i].y();
+        }
+     }
+    //area of rectangle formed
+    area=(bigx-smallx)*(bigy-smally);
 
-///**
-// * @brief Function to return the Perimeter of the Polygon
-// *
-// * @return Perimeter:  is value of type Double , represents the Perimeter of the Polygon.
-// */
-//double Polygon::perimeter()const
-//{
-//    double perimeter = 0;
+    return area;
+}
 
-//    for(int i=points.start; i<points.end(); i++)
-//    {
-//        const QPoint &first = *i;
-//        const QPoint &second = points.end();
+double polygon::perimeter()const
+{
+    double perim=0;
+    double hold;
 
-//        perimeter += sqrt((first-second), (first-second));
-//    }
-//    return perimeter;
-//}
+    for(int i = 0;i < points.size()-1;i++)
+    {
+        // distance formula
+        hold = sqrt(pow(points[i+1].x()- points[i].x(),2)+ pow(points[i+1].y()- points[i].y(),2));
+        perim+=hold;
+    }
+
+    return perim;
+}
+}

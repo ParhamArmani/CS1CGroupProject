@@ -1,5 +1,6 @@
 #include "rectangle.h"
-
+#include <iostream>
+using std::cout;
 namespace Shapes {
 
 /**
@@ -54,11 +55,10 @@ void rectangle::setHeight(int height)
  */
 void rectangle::draw(QPainter &p)
 {
-    getQpainter().setPen(getPen());
-    getQpainter().setBrush(getBrush());
-    getQpainter().save();
-    getQpainter().drawRect(rect);
-    getQpainter().restore();
+    QPen temp;
+    p.setPen(getPen());
+    cout << "hello : " << getPen().width() << '\n';
+    p.setBrush(getBrush());
     p.drawRect(getX(),getY(),w,h);
 }
 
