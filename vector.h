@@ -246,6 +246,8 @@ namespace CS1C
             std::copy(elem, elem + size_v, p);       //Copy the same vector in the new array with new capacity.
             delete[] elem;                      //Delete the content of the previous elements
             elem = p;                           //Assigning the elements to the Originial array
+            space = new_size;
+
         }
         
         //-------------------------------------------------
