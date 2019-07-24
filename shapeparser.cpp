@@ -16,7 +16,7 @@ CS1C::vector<shape*> ShapeParser::getShapeList() const
     return this->shapeList;
 }
 
-void ShapeParser::loadFile()
+int ShapeParser::loadFile()
 {
     QPaintDevice* device;
 
@@ -25,75 +25,85 @@ void ShapeParser::loadFile()
 	int id;
 	shapeTypeFILE TEMPshapeType = NOSHAPE;
 
-	load.open("shapes.txt");
+    load.open("shapes.txt", std::ios::in);
+    //std::cerr << "Error: " << strerror(errno);
+    if(!load.is_open())
+    {
+        cout << "[ERROR]: Parser file couldn't open!" << endl;
+        return 1;
+    }
+    if(load.is_open())
+    {
+        cout << "opened";
+    }
 
-	while (!load.eof())
-	{
+    while (!load.eof())
+    {
        char temp = load.peek();
-		if (temp == '\n')
-		{
-			//skips whitespace (\n) in the first line
-			load.ignore(1, '\n');
+        if (temp == '\n')
+        {
+            //skips whitespace (\n) in the first line
+            load.ignore(1, '\n');
             cout << endl << "***ignored newline***" << endl;
-		}
+        }
 
         //reads next line up to the colon, also ignores the following space
         getline(load, shapeProperty, ':');
-		load.ignore(1, ' ');
+        load.ignore(1, ' ');
         cout << endl << "[CONSOLE] Shape property: " << shapeProperty;
 
-		//grabs whatever is past the colon, then assigns it to shapeValues
+        //grabs whatever is past the colon, then assigns it to shapeValues
         getline(load, shapeValues, '\n');
         cout << endl << "[CONSOLE] Shape value(s): " << shapeValues << endl;
 
         //checks what was obtained from shapeProperty (anything before the colon)
-		if (shapeProperty == "ShapeId")
-		{
-			//converts string to int type, then stored in id
-			std::istringstream iss(shapeValues);
-			iss >> id;
-		}
+        if (shapeProperty == "ShapeId")
+        {
+            //converts string to int type, then stored in id
+            std::istringstream iss(shapeValues);
+            iss >> id;
+        }
 
-		//designates the shape type to an enum, which is used with a switch statement later
-		if (shapeProperty == "ShapeType")
-		{
-			if (shapeValues == "Line")				TEMPshapeType = LINE;
-			else if (shapeValues == "Polyline")		TEMPshapeType = POLYLINE;
-			else if (shapeValues == "Polygon")		TEMPshapeType = POLYGON;
-			else if (shapeValues == "Rectangle")	TEMPshapeType = RECTANGLE;
-			else if (shapeValues == "Square")		TEMPshapeType = SQUARE;
-			else if (shapeValues == "Ellipse")		TEMPshapeType = ELLIPSE;
-			else if (shapeValues == "Circle")		TEMPshapeType = CIRCLE;
-			else if (shapeValues == "Text")			TEMPshapeType = TEXT;
+        //designates the shape type to an enum, which is used with a switch statement later
+        if (shapeProperty == "ShapeType")
+        {
+            if (shapeValues == "Line")				TEMPshapeType = LINE;
+            else if (shapeValues == "Polyline")		TEMPshapeType = POLYLINE;
+            else if (shapeValues == "Polygon")		TEMPshapeType = POLYGON;
+            else if (shapeValues == "Rectangle")	TEMPshapeType = RECTANGLE;
+            else if (shapeValues == "Square")		TEMPshapeType = SQUARE;
+            else if (shapeValues == "Ellipse")		TEMPshapeType = ELLIPSE;
+            else if (shapeValues == "Circle")		TEMPshapeType = CIRCLE;
+            else if (shapeValues == "Text")			TEMPshapeType = TEXT;
 
-			switch (TEMPshapeType)
-			{
-			case LINE:
+            switch (TEMPshapeType)
+            {
+            case LINE:
                 loadLine(device, id);
                 break;
-			case POLYLINE:
+            case POLYLINE:
                 cout << "[CONSOLE] Shape is a polyline" << endl;
-				break;
-			case POLYGON:
+                break;
+            case POLYGON:
                 cout << "[CONSOLE] Shape is a polygon" << endl;
-				break;
-			case RECTANGLE:
+                break;
+            case RECTANGLE:
                 loadRectangle(device, id);
-				break;
-			case SQUARE:
+                break;
+            case SQUARE:
                 cout << "[CONSOLE] Shape is a square" << endl;
-				break;
-			case ELLIPSE:
+                break;
+            case ELLIPSE:
                 loadEllipse(device, id);
-				break;
-			case CIRCLE:
+                break;
+            case CIRCLE:
                 cout << "[CONSOLE] Shape is a circle" << endl;
-				break;
-			case TEXT:
+                break;
+            case TEXT:
                 loadText(device, id);
-			}
-		}
-	}
+            }
+        }
+    }
 }
 
 void ShapeParser::loadCircle(QPaintDevice *device, int id)
@@ -261,19 +271,20 @@ void ShapeParser::loadEllipse(QPaintDevice *device, int id)
     /**************************
      * DATA APPLICATION TIIIME
      **************************/
-    rectangle *tempRectangle = new rectangle(device, id, shape::shapeType::rectangle, tempX1, tempY1, tempWidth, tempHeight);
+    ellipse *tempEllipse = new ellipse(device, id);
+    QRect rect(tempX1, tempY1, tempMajorAxis, tempMinorAxis);
 
-    tempRectangle->setWidth(tempWidth);
-    tempRectangle->setHeight(tempHeight);
-    tempRectangle->setPenColor(Q_PenColor);
-    tempRectangle->setPenWidth(tempPenWidth_INT);
-    tempRectangle->setPenStyle(Q_PenStyle);
-    tempRectangle->setPenCap(Q_PenCapStyle);
-    tempRectangle->setPenJoint(Q_PenJoinStyle);
-    tempRectangle->setBrushColor(Q_BrushColor);
-    tempRectangle->setBrushStyle(Q_BrushStyle);
+    tempEllipse->setWidth(tempMinorAxis);
+    tempEllipse->setHeight(tempMajorAxis);
+    tempEllipse->setPenColor(Q_PenColor);
+    tempEllipse->setPenWidth(tempPenWidth_INT);
+    tempEllipse->setPenStyle(Q_PenStyle);
+    tempEllipse->setPenCap(Q_PenCapStyle);
+    tempEllipse->setPenJoint(Q_PenJoinStyle);
+    tempEllipse->setBrushColor(Q_BrushColor);
+    tempEllipse->setBrushStyle(Q_BrushStyle);
 
-    shapeList.push_back(tempRectangle);
+    shapeList.push_back(tempEllipse);
 }
 
 void ShapeParser::loadSquare(QPaintDevice *device, int id)
@@ -441,8 +452,11 @@ void ShapeParser::loadRectangle(QPaintDevice *device, int id)
     /**************************
      * DATA APPLICATION TIIIME
      **************************/
-    rectangle *tempRectangle = new rectangle(device, id, shape::shapeType::rectangle, tempX1, tempY1, tempWidth, tempHeight);
+    rectangle *tempRectangle = new rectangle(device, id);
 
+    const QRect rect(tempX1, tempY1, tempWidth, tempHeight);
+
+    tempRectangle->set_rect(rect);
     tempRectangle->setWidth(tempWidth);
     tempRectangle->setHeight(tempHeight);
     tempRectangle->setPenColor(Q_PenColor);
@@ -594,7 +608,7 @@ void ShapeParser::loadPolyLine(QPaintDevice *device, int id)
     /**************************
      * DATA APPLICATION TIIIME
      **************************/
-    Line *tempLine = new Line(device, id, shape::shapeType::line, tempX1, tempY1);
+    Line *tempLine = new Line(device, id);
 
     tempLine->setPenColor(Q_PenColor);
     tempLine->setPenWidth(tempPenWidth_INT);
@@ -738,8 +752,10 @@ void ShapeParser::loadLine(QPaintDevice *device, int id)
     /**************************
      * DATA APPLICATION TIIIME
      **************************/
-    Line *tempLine = new Line(device, id, shape::shapeType::line, tempX1, tempY1);
+    Line *tempLine = new Line(device, id);
 
+    tempLine->setStart(tempX1, tempY2);
+    tempLine->setEnd(tempX2, tempY2);
     tempLine->setPenColor(Q_PenColor);
     tempLine->setPenWidth(tempPenWidth_INT);
     tempLine->setPenStyle(Q_PenStyle);

@@ -10,12 +10,16 @@
 #include "shapes.h"
 #include "Line.h"
 #include "rectangle.h"
+#include "ellipse.h"
+#include "polygon.h"
+#include "polyline.h"
 #include "text.h"
 
 using std::string;
 using std::cout;
 using std::endl;
 using std::getline;
+using std::ifstream;
 using namespace Shapes;
 
 class ShapeParser
@@ -25,7 +29,7 @@ public:
 	~ShapeParser();
 
     CS1C::vector<shape*> getShapeList() const;
-	void loadFile();
+    int loadFile();
     int calculateWidth(int x1, int x2);
     int calculateHeight(int y1, int y2);
     void loadLine(QPaintDevice *device, int id);
@@ -42,7 +46,7 @@ protected:
 	//Line, Polyline, Polygon, Rectangle, Square[rectangle, l=w], Ellipse, Circle[ellipse, a=b], Text
     enum shapeTypeFILE { NOSHAPE, LINE = 1, POLYLINE, POLYGON, RECTANGLE, SQUARE, ELLIPSE, CIRCLE, TEXT };
     CS1C::vector<shape*> shapeList;
-    std::ifstream load;
+    ifstream load;
 };
 
 #endif // SHAPES_H
