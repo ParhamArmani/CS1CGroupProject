@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "drawwidg.h"
-#include "shape.h"
+#include "shapes.h"
 #include "text.h"
 #include <QPainter>
 #include <QtWidgets>
@@ -25,7 +25,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->canvas->setShapeList(shapeList);
     ui->canvas->drawShapes();
     ui->canvas->update();
-    access = false;
+//    access = false;
 }
 
 MainWindow::~MainWindow()
@@ -42,21 +42,16 @@ void MainWindow::on_contactBtn_clicked()
 void MainWindow::on_pushButton_clicked()
 {
     login* l = new login();
+    access = l->getBool();
     l->show();
     access = l->getBool();
 }
 
 void MainWindow::on_moveBtn_clicked()
 {
-    if(access == true)
-    {
-        shapeList = ui->canvas->getShapeList();
-        moveMenu* m = new moveMenu();
-        m->show();
-    }
-    else {
-        QMessageBox::information(this,"Error", "Admin access required");
-    }
+    shapeList = ui->canvas->getShapeList();
+    moveMenu* m = new moveMenu();
+    m->show();
 }
 
 void MainWindow::on_pushButton_2_clicked()

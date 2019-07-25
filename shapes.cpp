@@ -4,9 +4,8 @@
 
 namespace Shapes {
 
-shape::shape(QPaintDevice* device, int id, shapeType s) : paint{device}, s{s}, id{id}
+shape::shape(QPaintDevice* device, int id, shapeType s) : paintType(device), s{s}, id{id}
 {
-    paint.begin(device);
 //    pen = Qt::SolidLine;
 //    brush = Qt::NoBrush;
 }
@@ -23,12 +22,12 @@ int shape::getId() const
 
 const QPen& shape::getPen() const
 {
-    return paint.pen();
+    return paintType.pen();
 }
 
 const QBrush& shape::getBrush() const
 {
-    return paint.brush();
+    return paintType.brush();
 }
 
 /**
@@ -45,19 +44,18 @@ void shape::setShape(shapeType shape)
  * @param Qt::GlobalColor: color of the pen
  * @param width : width of the pen
  * @param Qt::PenStyle: style of the pen
- * @param Qt::PenCapStyle: Cap style of the pen.
+ * @param Qt::PenCapStyle: Cap style of the penType.
  * @param Qt::PenJoinStyle: Join style of the pen
  */
-void shape::setPen(Qt::GlobalColor, int width, Qt::PenStyle, Qt::PenCapStyle, Qt::PenJoinStyle)
+void shape::setPen(Qt::GlobalColor c, int width, Qt::PenStyle s, Qt::PenCapStyle cs, Qt::PenJoinStyle js)
 {
-    QPen newPen;
-    newPen.setColor(Qt::GlobalColor());
-    newPen.setWidth(width);
-    newPen.setStyle(Qt::PenStyle());
-    newPen.setCapStyle(Qt::PenCapStyle());
-    newPen.setJoinStyle(Qt::PenJoinStyle());
-    paint.setPen(newPen);
-//    pen = newPen;
+    penType.setColor(c);
+    penType.setWidth(width);
+    penType.setStyle(s);
+    penType.setCapStyle(cs);
+    penType.setJoinStyle(js);
+    paintType.setPen(penType);
+    return;
 }
 
 /**
@@ -65,13 +63,12 @@ void shape::setPen(Qt::GlobalColor, int width, Qt::PenStyle, Qt::PenCapStyle, Qt
  * @param Qt::GlobalColor: to set the global color of the qt object
  * @param Qt::BrushStyle: to set the BrushStyle of the qt object.
  */
-void shape::setBrush(Qt::GlobalColor, Qt::BrushStyle)
+void shape::setBrush(Qt::GlobalColor c, Qt::BrushStyle s)
 {
-    QBrush newBrush;
-    newBrush.setColor(Qt::GlobalColor());
-    newBrush.setStyle(Qt::BrushStyle());
-    paint.setBrush(newBrush);
-//    brush = newBrush;
+    brushType.setColor(c);
+    brushType.setStyle(s);
+    paintType.setBrush(brushType);
+    return;
 }
 
 /**
@@ -98,7 +95,7 @@ void shape::setId(int i)
  */
 void shape::setPenColor(Qt::GlobalColor)
 {
-    pen.setColor(Qt::GlobalColor());
+    penType.setColor(Qt::GlobalColor());
 }
 
 /**
@@ -108,17 +105,17 @@ void shape::setPenColor(Qt::GlobalColor)
  */
 void shape::setPenStyle(Qt::PenStyle)
 {
-    pen.setStyle(Qt::PenStyle());
+    penType.setStyle(Qt::PenStyle());
 }
 
 /**
- * @brief Function to set the width of the QT pen.
+ * @brief Function to set the width of the QT penType.
  *
  * @param w : the an integer which the width of the pen will be set to.
  */
 void shape::setPenWidth(int w)
 {
-    pen.setWidth(w);
+    penType.setWidth(w);
 }
 
 /**
@@ -128,7 +125,7 @@ void shape::setPenWidth(int w)
 
 void shape::setPenCap(Qt::PenCapStyle)
 {
-    pen.setCapStyle(Qt::PenCapStyle());
+    penType.setCapStyle(Qt::PenCapStyle());
 }
 
 /**
@@ -138,7 +135,7 @@ void shape::setPenCap(Qt::PenCapStyle)
 
 void shape::setPenJoint(Qt::PenJoinStyle)
 {
-    pen.setJoinStyle(Qt::PenJoinStyle());
+    penType.setJoinStyle(Qt::PenJoinStyle());
 }
 
 /**
@@ -147,7 +144,7 @@ void shape::setPenJoint(Qt::PenJoinStyle)
  */
 void shape::setBrushColor(Qt::GlobalColor)
 {
-    brush.setColor(Qt::GlobalColor());
+    brushType.setColor(Qt::GlobalColor());
 }
 
 /**
@@ -156,7 +153,7 @@ void shape::setBrushColor(Qt::GlobalColor)
  */
 void shape::setBrushStyle(Qt::BrushStyle)
 {
-    brush.setStyle(Qt::BrushStyle());
+    brushType.setStyle(Qt::BrushStyle());
 }
 /**
  * @brief Function to set the coordinate the QT object.
@@ -197,6 +194,6 @@ int shape::getY()
  */
 QPainter& shape::getQpainter()
 {
-    return paint;
+    return paintType;
 }
 }

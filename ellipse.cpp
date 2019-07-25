@@ -30,12 +30,10 @@ void ellipse::setWidth(int newW)
  */
 void ellipse::draw(QPainter &p, QPaintDevice* device)
 {
-    getQpainter().setPen(getPen());
-    getQpainter().setBrush(getBrush());
-    getQpainter().save();
-
-    getQpainter().drawEllipse(rect);
-    getQpainter().restore();
+    QString idString;
+    int i = getId();
+    idString = (char)i;
+    p.drawText(getX(),getY()-5,QString::number(getId()));
     p.drawEllipse(getX(),getY(),w,h);
 }
 

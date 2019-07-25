@@ -9,13 +9,11 @@ void polygon::set_point(const QPoint& point)
 
 void polygon::draw(QPainter &p, QPaintDevice* device)
 {
-    getQpainter().setPen(getPen());
-    getQpainter().setBrush(getBrush());
-    getQpainter().save();
-    getQpainter().drawPolygon(points.begin(),points.size());
-//    getQpainter().restore();
+    QPoint b = *points.begin();
+    b.setX(b.x()-20);
+    b.setY(b.y()-20);
+    p.drawText(b,QString::number(getId()));
     p.drawPolygon(points.begin(), points.size());
-
 }
 
 void polygon::move(const int newX, const int newY)

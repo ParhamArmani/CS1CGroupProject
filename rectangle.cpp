@@ -1,6 +1,11 @@
 #include "rectangle.h"
 #include <iostream>
+#include <string>
+
 using std::cout;
+using std::string;
+using std::stringstream;
+
 namespace Shapes {
 
 /**
@@ -55,16 +60,10 @@ void rectangle::setHeight(int height)
  */
 void rectangle::draw(QPainter &p, QPaintDevice* device)
 {
-//    p.begin(device);
-    getQpainter().begin(device);
-//    getQpainter().setPen(getPen());
-//    getQpainter().setBrush(getBrush());
-    getQpainter().drawRect(getX(),getY(),w,h);
-//    p.setPen(getPen());
-//    p.setBrush(getBrush());
-    p.setBrush(brush);
-    p.setPen(pen);
-//    p.drawRect(getX(),getY(),w,h);
+    p.setBrush(brushType);
+    p.setPen(penType);
+    p.drawText(getX(),getY()-5,QString::number(getId()));
+    p.drawRect(getX(),getY(),w,h);
 }
 
 /**

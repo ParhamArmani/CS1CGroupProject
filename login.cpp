@@ -25,7 +25,7 @@ void login::on_pushButton_clicked()
     {
         QMessageBox::information(this,"Login","Administrator confirmed");
         correctPswrd = true;
-        close();
+        this->close();
     }
 }
 

@@ -47,9 +47,10 @@ public:
     void setCoords(int, int);       //changes the shapes position
     int getX();                     //gets the x value
     int getY();                     //gets the y value
-    QPainter paint;
-    QPen pen;
-    QBrush brush;
+
+    QPainter paintType;
+    QPen penType;
+    QBrush brushType;
 
 protected:
     QPainter& getQpainter();

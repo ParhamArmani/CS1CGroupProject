@@ -57,14 +57,7 @@ void Line::setStart(int X, int Y)
  */
 void Line::draw(QPainter &p, QPaintDevice* device)
 {
-    p.begin(device);
-    QPen temp;
-    temp.setColor(Qt::blue);
-    temp.setWidth(2);
-    temp.setStyle(Qt::PenStyle::DashDotLine);
-    temp.setCapStyle(Qt::PenCapStyle::FlatCap);
-    temp.setJoinStyle(Qt::PenJoinStyle::MiterJoin);
-    p.setPen(temp);
+    p.drawText(getX(),getY()-20,QString::number(getId()));
     p.drawLine(startX,startY,endX,endY);
 }
 
